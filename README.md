@@ -30,7 +30,9 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 
 7. player2.js
 
-8. obstacle.js
+8. objectFollower.js
+
+9. objectHater.js
 
 ## 1. index.html file
 
@@ -145,7 +147,28 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - increasePoints
 - decreasePoints
 
-## 8. Object Constructor
+## 8. Object follower Constructor
+
+### Properties
+
+- canvas
+- ctx
+- id
+- x position
+- y position
+- width
+- height
+- image
+- directionX
+- directionY
+
+
+### Methods
+
+- draw
+- update
+
+## 9. Object hater Constructor
 
 ### Properties
 
@@ -204,7 +227,8 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - Create Game2 constructor
 - Create loop in game2.js
 - Create Player2 constructor
-- Create Obstacle constructor
+- Create Object follower constructor
+- Create Object hater constructor
 - Draw objects in game2.js
 - Move objects in game2.js
 - Move player2 in game2.js
