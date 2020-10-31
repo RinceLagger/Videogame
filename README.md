@@ -220,4 +220,10 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - Add more music/audio effects
 - Move the player2 in game2 instead of with the arrows attached to the mouse
 
+## Links
+
+###Trello
+
+[Link to Trello](https://trello.com/b/DEc1K2EF/ironhack-project1-videogame)
+
 
