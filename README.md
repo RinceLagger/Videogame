@@ -61,40 +61,65 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 
 ### Properties
 
-canvas
-ctx
-x position
-y position
-width
-height
-image
-direction
+- canvas
+- ctx
+- x position
+- y position
+- width
+- height
+- image
+- direction
 
 ### Methods
 
-draw
-update
-collidedWithObstacle
-collidedWithScreen
+- draw
+- update
+- collidedWithObstacle
+- collidedWithScreen
 
-## 5. Objects Constructor
+## 5. Object Constructor
 
 ### Properties
 
-canvas
-ctx
-id
-x position
-y position
-width
-height
-image
-text
+- canvas
+- ctx
+- id
+- x position
+- y position
+- width
+- height
+- image
+- text
 
 ### Methods
 
-draw
-showText
+- draw
+- showText
+
+## 6. Game2 Constructor
+
+### Properties
+
+- canvas
+- ctx
+- player2
+- obstacle
+- gameIsOver
+- gameIsWon
+- time
+- score
+
+### Methods
+
+- startLoop
+- checkCollision
+- checkTime
+- checkPoints
+- gameWon / gameOver
+- printTime
+- printScore
+
+
 
 
 
