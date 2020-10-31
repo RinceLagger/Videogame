@@ -56,6 +56,7 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 
 - startLoop
 - checkCollision
+- Exit
 
 ## 4. Player1 Constructor
 
@@ -107,7 +108,7 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - gameIsOver
 - gameIsWon
 - time
-- score
+
 
 ### Methods
 
@@ -117,9 +118,53 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - checkPoints
 - gameWon / gameOver
 - printTime
+
+
+## 7. Player2 Constructor
+
+### Properties
+
+- canvas
+- ctx
+- x position
+- y position
+- width
+- height
+- image
+- directionX
+- directionY
+- score
+
+### Methods
+
+- draw
+- update
+- collidedWithObstacle
+- collidedWithScreen
 - printScore
+- increasePoints
+- decreasePoints
+
+## 8. Object Constructor
+
+### Properties
+
+- canvas
+- ctx
+- id
+- x position
+- y position
+- width
+- height
+- image
+- directionX
+- directionY
 
 
+### Methods
+
+- draw
+- update
 
 
 
