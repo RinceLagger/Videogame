@@ -14,4 +14,22 @@ A player that come move across a room by clicking the zone of the room. If the c
 In the game, the player will be move with the arrows of the keyboard. Followers "green-rectangles" collected increase your punctuation. 
 If the hatters ("red-rectangules") collides with the player, the punctuation will be decreased. You must achieve 100 points before the time expires.
 
+Data Structure
+
+1. index.html
+
+2. main.js
+
+3. game1.js
+
+4. player1.js
+
+5. object.js
+
+6. game2.js
+
+7. player2.js
+
+8. obstacle.js
+
 
