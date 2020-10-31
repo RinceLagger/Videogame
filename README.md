@@ -186,4 +186,38 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
     - Shows Win message, random quote, time score, scoreboard and Restart button
     - Goes back to Game Screen when Restart button is clicked
 
+## Tasks
+
+- Setup git & GitHub
+- Create and connect files: main.js, player.js, obstacle.js,
+- BuildDom in main.js
+- Create 5 screens in main.js
+- Create screen transitions in main.js
+- Create Game1 constructor
+- Create loop in game1.js
+- Create Player1 constructor
+- Create Object constructor
+- Draw objects in game1.js
+- Move player1 in game.js
+- Check Collisions in game1.js
+- Check clicks in objects in game1.js
+- Create Game2 constructor
+- Create loop in game2.js
+- Create Player2 constructor
+- Create Obstacle constructor
+- Draw objects in game2.js
+- Move objects in game2.js
+- Move player2 in game2.js
+- Check Collisions in game2.js
+- Check game result in game2.js
+- Add time and print it in game2.js
+- Add audios, img and fonts
+
+## Backlog
+
+- Add more objects to interact with
+- Add aditional screens/animation while interacting with objects
+- Add more music/audio effects
+- Move the player2 in game2 instead of with the arrows attached to the mouse
+
 
