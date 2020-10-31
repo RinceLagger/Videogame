@@ -55,10 +55,13 @@ class Player1 {
 //   }
 
   checkObjective(){
-      console.log(this.x-this.objectiveX);  
+      console.log(Math.abs(this.y-this.objectiveY));  
 
-      if((this.x-this.objectiveX)===0)this.directionX =0;
-      if((this.y-this.objectiveY)===0)this.setDirectionY =0;
+      if(Math.abs(this.x-this.objectiveX)<5)this.directionX =0;
+      if(Math.abs(this.y-this.objectiveY)<5){
+        this.directionY =0;
+        console.log("paso por cero");
+      }
 
   }
 
