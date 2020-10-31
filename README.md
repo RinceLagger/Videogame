@@ -4,7 +4,7 @@ Become a Famous Youtuber!
 
 ## Description
 
-you are an anonymous youtuber looking to become famous. Inspect your room and when you are ready start to stream! 
+You are an anonymous youtuber looking to become famous. Inspect your room and when you are ready start to stream! 
 If you do it well, you will be able to gain many followers!
 While streaming, the objective is to collect followers while you avoid your "haters". You must achieve a certain number of followers before the time expires.
 
@@ -12,7 +12,7 @@ While streaming, the objective is to collect followers while you avoid your "hat
 
 A player that come move across a room by clicking the zone of the room. If the computer-object is clicked, the streaming will start (the game).
 In the game, the player will be move with the arrows of the keyboard. Followers "green-rectangles" collected increase your punctuation. 
-If the hatters ("red-rectangules") collides with the player, the punctuation will be decreased. You must achieve 100 points before the time expires.
+If the haters ("red-rectangules") collides with the player, the punctuation will be decreased. You must achieve 100 points before the time expires.
 
 ## Data Structure
 
@@ -44,3 +44,58 @@ If the hatters ("red-rectangules") collides with the player, the punctuation wil
 - startGame / endGame
 
 ## 3. Game1 Constructor
+
+### Properties
+
+- canvas
+- ctx
+- player1
+- objects
+
+### Methods
+
+- startLoop
+- checkCollision
+
+## 4. Player1 Constructor
+
+### Properties
+
+canvas
+ctx
+x position
+y position
+width
+height
+image
+direction
+
+### Methods
+
+draw
+update
+collidedWithObstacle
+collidedWithScreen
+
+## 5. Objects Constructor
+
+### Properties
+
+canvas
+ctx
+id
+x position
+y position
+width
+height
+image
+text
+
+### Methods
+
+draw
+showText
+
+
+
+
