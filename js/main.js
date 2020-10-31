@@ -21,37 +21,47 @@ function main() {
         startButton.addEventListener("click", buildGame1Screen);
       }
 
-function  buildGame1Screen() {
-    buildDom(`
-    <section class="game-screen">
-        <canvas></canvas>
-        <div id="dialogs">
-        <p>Texto con observaciones de objetos</p>
-        </div>
-    </section>  
-`);
+    function  buildGame1Screen() {
+        buildDom(`
+        <section class="game-screen">
+            <canvas></canvas>
+            <div id="dialogs">
+            <p>Texto con observaciones de objetos</p>
+            </div>
+        </section>  
+        `);
 
-// const width = document.querySelector(".game-screen").offsetWidth;
-// const height = document.querySelector(".game-screen").offsetHeight;
+        const width = Math.floor(window.innerWidth*0.9);
+        const height = Math.floor(window.innerHeight*0.8);
 
-const width = Math.floor(window.innerWidth*0.9);
-const height = Math.floor(window.innerHeight*0.8);
+        
 
-console.log(width);
+        const canvasElement = document.querySelector("canvas");
 
-const canvasElement = document.querySelector("canvas");
+        canvasElement.setAttribute("width", width);
+        canvasElement.setAttribute("height", height);
 
-canvasElement.setAttribute("width", width);
-canvasElement.setAttribute("height", height);
+        const game1 = new Game1(canvasElement);
+
+        game1.startLoop();
+
+
+        canvasElement.addEventListener("click", objectivePosition);
+
+        function objectivePosition(event){
+            console.log("click");
+            game1.player1.setDirection(event);
+            //game1.player1.setDirectionY(event.clientY);
+
+        }
 
 
 
-
-}     
+    }     
     
 
 
-      buildSplashScreen();
+    buildSplashScreen();
 
 
 
