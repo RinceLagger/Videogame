@@ -28,3 +28,20 @@
     margin-bottom: 20px;
     width: 20%;
 }
+
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+} 
+.game-screen #dialogs{
+    height: 20%;
+    width: 90%;
+    background-color: cyan;
+}
+
+canvas{
+    border: 1px solid red;
+    
+}
