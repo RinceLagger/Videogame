@@ -222,7 +222,7 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 
 ## Links
 
-###Trello
+### Trello
 
 [Link to Trello](https://trello.com/b/DEc1K2EF/ironhack-project1-videogame)
 
