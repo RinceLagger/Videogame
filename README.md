@@ -166,6 +166,24 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 - draw
 - update
 
+## States and States Transitions
 
+- startScreen
+    Start the game  
+    Goes to game1Screen when Start button is clicked
+- game1Screen
+    Game running until the "computer-object" is clicked or the "exit door" is clicked
+    Goes to the game2Screen if "computer-object" is clicked
+    Goes to startScreen if "exit door" is clicked
+- game2Screen
+    Game running until objective score is achieved or the time is over
+    Goes to gameoverScreen if time is over
+    Goes to winScreen if the objective score is achieved
+- gameoverScreen
+    Shows Game Over message and Restart button
+    Goes back to Game Screen when Restart button is clicked
+- winScreen
+    Shows Win message, random quote, time score, scoreboard and Restart button
+    Goes back to Game Screen when Restart button is clicked
 
 
