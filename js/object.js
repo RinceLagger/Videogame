@@ -10,6 +10,7 @@ class Object {
       this.y = y;
       this.text = text;
       this.textContainer = document.querySelector("#dialogs p");
+      this.indexTest = 0;
      
     }
   
@@ -22,13 +23,14 @@ class Object {
     }
 
 
-    showTest(){
+    showTest(){//muestra los comentarios de los objetos al clickar sobre ellos
         
-        const textRandom = Math.floor(Math.random()*this.text.length);
-        let innerText = this.text[textRandom];
+        
+        let innerText = this.text[this.indexTest];
         this.textContainer.innerText = innerText;
-
-
+        
+        this.indexTest++;
+        if(this.indexTest>=this.text.length)this.indexTest=0;
     }
   
 

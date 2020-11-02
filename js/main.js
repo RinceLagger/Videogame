@@ -26,7 +26,7 @@ function main() {
         <section class="game-screen">
             <canvas></canvas>
             <div id="dialogs">
-            <p>Texto con observaciones de objetos</p>
+            <p>Bienvenido a la habitación...qué digo, al templo de trabajo de Cienfuegos. Inspecciona el lugar y consigue ser el Youtuber más famoso del mundo</p>
             </div>
         </section>  
         `);

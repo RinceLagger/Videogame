@@ -14,7 +14,7 @@ class Player1 {
     this.objectiveX = 0;
     this.objectiveY = 0;
     this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
-    this.objective = {offsetX:0,offsetY:0};
+    
     
   }
 
@@ -87,8 +87,8 @@ class Player1 {
     const posWallDer = Math.abs((this.canvas.width-(this.x + this.sizeX))/(this.canvas.height -(this.y + this.sizeY/2)));
     // console.log(this.canvas.height );
     // console.log((this.y + this.sizeY));
-    console.log(this.proportionWall);
-    console.log(posWallDer);
+    // console.log(this.proportionWall);
+    // console.log(posWallDer);
     if(posWallDer<this.proportionWall){ //si chocamos separamos 2 pixels de la pared
       this.directionX = 0;
       this.directionY = 0;

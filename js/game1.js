@@ -1,5 +1,5 @@
 "use strict";
-const textObjetoPrueba = ["texto prueba1","texto prueba2"];
+const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
 
 
 class Game1 {
@@ -66,13 +66,8 @@ class Game1 {
   checkAllCollisions() {
     //this.player.checkScreen();
     this.objects.forEach((object, index) => {
-      if (this.player1.checkCollisionObject(object)) {
-       // this.player.loseLive();
-       // this.enemies.splice(index, 1);
-        // if (this.player.lives === 0) {
-        //   this.isGameOver = true;
-        //   this.onGameOver();
-        // }
+      if (this.player1.checkCollisionObject(object)) { //una vez estamos pegados al objeto mostramos su texto asociado
+        this.objects[index].showTest();
       }
     });
   }
