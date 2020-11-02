@@ -51,7 +51,7 @@ function main() {
         function objectivePosition(event){
             console.log("click");
             game1.player1.setDirection(event);
-            //game1.player1.setDirectionY(event.clientY);
+            
 
         }
 

@@ -1,4 +1,6 @@
 "use strict";
+const textObjetoPrueba = ["texto prueba1","texto prueba2"];
+
 
 class Game1 {
   constructor(canvas) {
@@ -11,18 +13,18 @@ class Game1 {
 
   startLoop() {
     this.player1 = new Player1(this.canvas);
-
+    this.createRoom();//generamos la habitación y objetos
     const loop = () => {
     //   if (Math.random() > 0.97) {
     //     const y = Math.random() * this.canvas.height;
     //     this.enemies.push(new Enemy(this.canvas, y));
     //   }
 
-      //this.checkAllCollisions();
-      
+      this.checkAllCollisions();
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
+
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
       }
@@ -43,25 +45,35 @@ class Game1 {
   }
 
   drawCanvas() {
+
+    this.objects.forEach((object) => {
+      object.draw();
+    });
+
     this.player1.draw();
-    // this.enemies.forEach((enemy) => {
-    //   enemy.draw();
-    // });
+
+
   }
 
-//   checkAllCollisions() {
-//     this.player.checkScreen();
-//     this.enemies.forEach((enemy, index) => {
-//       if (this.player.checkCollisionEnemy(enemy)) {
-//         this.player.loseLive();
-//         this.enemies.splice(index, 1);
-//         if (this.player.lives === 0) {
-//           this.isGameOver = true;
-//           this.onGameOver();
-//         }
-//       }
-//     });
-//   }
+  createRoom(){
+    const ordenador = new Object(this.canvas,this.canvas.width/2,this.canvas.height/2, 50,50,textObjetoPrueba);
+    this.objects.push(ordenador);
+
+  }
+
+  checkAllCollisions() {
+    //this.player.checkScreen();
+    this.objects.forEach((object, index) => {
+      if (this.player1.checkCollisionObject(object)) {
+       // this.player.loseLive();
+       // this.enemies.splice(index, 1);
+        // if (this.player.lives === 0) {
+        //   this.isGameOver = true;
+        //   this.onGameOver();
+        // }
+      }
+    });
+  }
 
 //   gameOverCallback(callback) {
 //     this.onGameOver = callback;
