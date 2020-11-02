@@ -54,7 +54,7 @@ class Player1 {
       if(Math.abs(this.x-this.objectiveX)<5)this.directionX =0;
       if(Math.abs(this.y-this.objectiveY)<5){
         this.directionY =0;
-        //console.log("paso por cero");
+        //console.log("paso por cero");//
       }
 
   }
@@ -74,20 +74,64 @@ class Player1 {
     const collideTop = this.y + this.sizeY / 2 > object.y - object.sizeY / 2;
     const collideBottom = this.y - this.sizeY / 2 < object.y + object.sizeY / 2;
 
-    // console.log("comprobando colisiones")
-    // console.log(this.x + this.sizeX / 2);
-    // console.log(object.x - object.sizeX / 2);
+
+    
     if (collideRight && collideLeft && collideTop && collideBottom) {//si colisionamos paramos al jugador
-      console.log("colisión!");
-      this.directionX = 0;
-      this.directionY = 0;
+      // console.log(this.directionX );
+      // console.log(this.directionY );
+      // console.log("comprobando colisiones")
+
+      //separamos dos pixeles el personaje para permitir de nuevo movimiento
+      if(this.directionX ===1 && this.directionY ===-1 ){
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x - 2;
+        this.y= this.y + 2;
+
+      }
+      else if(this.directionX ===1 && this.directionY ===1 ){
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x - 2;
+        this.y= this.y - 2;
+      }
+      else if(this.directionX ===-1 && this.directionY ===-1 ){
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x + 2;
+        this.y= this.y + 2;
+      }
+      else if(this.directionX ===-1 && this.directionY ===1) {
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x + 2;
+        this.y= this.y - 2;
+      }
+      else if(this.directionX ===0 && this.directionY ===1) {
+          this.directionX = 0;
+          this.directionY = 0;
+          this.y= this.y - 2;
+        }
+      else if(this.directionX ===1 && this.directionY ===0 ){
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x - 2;
+        }
+      else if(this.directionX ===0 && this.directionY ===-1 ){
+        this.directionX = 0;
+        this.directionY = 0;
+        this.y= this.y + 2;
+      }
+      else if(this.directionX ===-1 && this.directionY ===0) {
+        this.directionX = 0;
+        this.directionY = 0;
+        this.x = this.x + 2;
+        }
+      
       return true;
     }
 
     return false;
   }
 
-//   loseLive() {
-//     this.lives--;
-//   }
 }
