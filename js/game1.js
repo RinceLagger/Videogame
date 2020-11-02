@@ -1,6 +1,6 @@
 "use strict";
 const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
-
+const textObjetoPrueba2 = ["Esto es una cama"];
 
 class Game1 {
   constructor(canvas) {
@@ -29,6 +29,8 @@ class Game1 {
 
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
+      }else{
+        this.onGame2();
       }
     };
 
@@ -37,9 +39,7 @@ class Game1 {
 
   updateCanvas() {
     this.player1.update();
-    // this.enemies.forEach((enemy) => {
-    //   enemy.update();
-    // });
+
   }
 
   clearCanvas() {
@@ -58,8 +58,11 @@ class Game1 {
   }
 
   createRoom(){
-    const ordenador = new Object(this.canvas,this.canvas.width/2,this.canvas.height/2, 50,50,textObjetoPrueba);
+    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2, 50,50,textObjetoPrueba);
     this.objects.push(ordenador);
+
+    const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2);
+    this.objects.push(cama);
 
   }
 
@@ -67,12 +70,15 @@ class Game1 {
     //this.player.checkScreen();
     this.objects.forEach((object, index) => {
       if (this.player1.checkCollisionObject(object)) { //una vez estamos pegados al objeto mostramos su texto asociado
-        this.objects[index].showTest();
+        if(this.objects[index].showTest())this.isGameOver = true; 
+        
       }
     });
   }
 
-//   gameOverCallback(callback) {
-//     this.onGameOver = callback;
-//   }
+  game2(callback){
+    this.onGame2 = callback;
+  }
+
+
 }

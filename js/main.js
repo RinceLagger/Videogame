@@ -10,7 +10,7 @@ function main() {
         main.innerHTML = html;
     }
 
-    function buildSplashScreen() {
+    function buildSplashScreen() {//genera pantalla inicio
         buildDom(`
             <div class="game-intro">
                 <div class="imageContainer"></div>
@@ -21,7 +21,7 @@ function main() {
         startButton.addEventListener("click", buildGame1Screen);
       }
 
-    function  buildGame1Screen() {
+    function  buildGame1Screen() {//genera pantalla game1
         buildDom(`
         <section class="game-screen">
             <canvas></canvas>
@@ -43,6 +43,8 @@ function main() {
 
         const game1 = new Game1(canvasElement);
 
+        game1.game2(buildGame2Screen);
+
         game1.startLoop();
 
 
@@ -52,12 +54,33 @@ function main() {
             console.log("click");
             game1.player1.setDirection(event);
             
-
         }
 
-
-
     }     
+
+
+    function  buildGame2Screen() {//genera pantalla game2
+        buildDom(`
+        <section class="game-screen">
+            <canvas></canvas>
+            <div id="dialogs">
+            <p>juego 2</p>
+            </div>
+        </section>  
+        `);
+
+        const width = Math.floor(window.innerWidth*0.9);
+        const height = Math.floor(window.innerHeight*0.8);
+
+        
+
+        const canvasElement = document.querySelector("canvas");
+
+        canvasElement.setAttribute("width", width);
+        canvasElement.setAttribute("height", height);
+
+
+    }   
     
 
 
