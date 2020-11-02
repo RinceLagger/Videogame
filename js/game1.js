@@ -9,6 +9,8 @@ class Game1 {
     this.player1;
     this.objects = [];
     this.isGameOver = false;
+
+    this.proportionWall = (this.canvas.height/2)/(this.canvas.width*0.1);
   }
 
   startLoop() {

@@ -3,24 +3,27 @@
 class Player1 {
   constructor(canvas) {
     this.sizeX = 40;
-    this.sizeY = 40;
+    this.sizeY = 100;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = this.sizeX / 2;
-    this.y = this.canvas.height / 2;
+    this.x = this.canvas.width/2 - this.sizeX / 2;
+    this.y = this.canvas.height - this.sizeY / 2;;
     this.speed = 2;
     this.directionX = 0;
     this.directionY = 0;
     this.objectiveX = 0;
     this.objectiveY = 0;
+    this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
+    this.objective = {offsetX:0,offsetY:0};
     
   }
 
   update() {
-    this.checkObjective();  
+    
     this.y = this.y + this.directionY * this.speed;
     this.x = this.x + this.directionX * this.speed;
-  
+    this.checkObjective(); 
+    this.checkSzenario(); 
     }
 
   draw() {
@@ -59,20 +62,52 @@ class Player1 {
 
   }
 
-//   checkScreen() {
-//     if (this.y - this.size / 2 <= 0) {
-//       this.direction = 1;
-//     } else if (this.y + this.size / 2 >= this.canvas.height) {
-//       this.direction = -1;
-//     }
-//   }
+  checkSzenario() { //comprueba que no se salga el personaje de la escena
+    //console.log(this.y - this.sizeY / 2 )
+    if (this.y /*- this.sizeY / 2*/ <= this.canvas.height/2) {
+      this.y = this.canvas.height/2 /*+ this.sizeY/2;*/
+     // console.log(this.y)
+    }else if(this.y + this.sizeY / 2 >= this.canvas.height){
+      this.y = this.canvas.height - this.sizeY/2;
+
+    } 
+    //comprobamos limites de pared izquierda
+    const posWallIzq = Math.abs((this.x - this.sizeX)/(this.canvas.height -(this.y + this.sizeY/2)));
+    // console.log(this.canvas.height );
+    // console.log((this.y + this.sizeY));
+    // console.log(this.proportionWall);
+    // console.log(posWallIzq);
+    if(posWallIzq<this.proportionWall){ //si chocamos separamos 2 pixels de la pared
+      this.directionX = 0;
+      this.directionY = 0;
+      this.x = this.x +2;
+      this.y = this.y +2;
+    }
+    //comprobamos limites de pared derecha
+    const posWallDer = Math.abs((this.canvas.width-(this.x + this.sizeX))/(this.canvas.height -(this.y + this.sizeY/2)));
+    // console.log(this.canvas.height );
+    // console.log((this.y + this.sizeY));
+    console.log(this.proportionWall);
+    console.log(posWallDer);
+    if(posWallDer<this.proportionWall){ //si chocamos separamos 2 pixels de la pared
+      this.directionX = 0;
+      this.directionY = 0;
+      this.x = this.x -2;
+      this.y = this.y +2;
+    }
+
+
+  }
 
   checkCollisionObject(object) {
-    const collideRight = this.x + this.sizeX / 2 > object.x - object.sizeX / 2;
-    
+
+
+
+
+    const collideRight = this.x + this.sizeX / 2 > object.x - object.sizeX / 2;    
     const collideLeft = this.x - this.sizeX / 2 < object.x + object.sizeX / 2;
     const collideTop = this.y + this.sizeY / 2 > object.y - object.sizeY / 2;
-    const collideBottom = this.y - this.sizeY / 2 < object.y + object.sizeY / 2;
+    const collideBottom = this.y /*- this.sizeY / 2*/ < object.y + object.sizeY / 2;
 
 
     
@@ -81,7 +116,8 @@ class Player1 {
       // console.log(this.directionY );
       // console.log("comprobando colisiones")
 
-      //separamos dos pixeles el personaje para permitir de nuevo movimiento
+      //separamos dos pixeles el personaje para permitir de nuevo movimiento en la dirección contraria a la que el personaje llevaba
+      
       if(this.directionX ===1 && this.directionY ===-1 ){
         this.directionX = 0;
         this.directionY = 0;
