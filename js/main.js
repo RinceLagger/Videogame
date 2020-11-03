@@ -48,10 +48,10 @@ function main() {
         game1.startLoop();
 
 
-        canvasElement.addEventListener("click", objectivePosition);
+        canvasElement.addEventListener("click", objectivePosition); //añado funcionalidad con el ratón para el game1
 
         function objectivePosition(event){
-            console.log("click");
+            //console.log("click");
             game1.player1.setDirection(event);
             
         }
@@ -79,6 +79,31 @@ function main() {
         canvasElement.setAttribute("width", width);
         canvasElement.setAttribute("height", height);
 
+        const game2 = new Game2(canvasElement);
+
+        const setPlayerDirection = (event) => { //añado funcionalidad con las flechas del teclado para el game2
+
+            if (event.code === "ArrowUp" || event.code === "ArrowDown" || event.code === "ArrowRight" || event.code === "ArrowLeft" ) {
+                game2.player.setDirectionY(0);
+                game2.player.setDirectionX(0);
+            }
+            
+            game2.player.setDirectionY(0);
+
+            if (event.code === "ArrowUp") {
+              game2.player.setDirectionY(-1);
+            } if (event.code === "ArrowDown") {
+              game2.player.setDirectionY(1);
+            } if (event.code === "ArrowRight") {
+                game2.player.setDirectionX(1);
+            }else if (event.code === "ArrowLeft") {
+                game2.player.setDirectionX(-1);
+            }
+            
+          };
+      
+          document.addEventListener("keydown", setPlayerDirection);
+          game2.startLoop();
 
     }   
     
