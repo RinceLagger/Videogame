@@ -1,6 +1,7 @@
 "use strict";
 const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
 const textObjetoPrueba2 = ["Esto es una cama"];
+const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto"];
 
 class Game1 {
   constructor(canvas) {
@@ -10,7 +11,7 @@ class Game1 {
     this.objects = [];
     this.isGameOver = false;
 
-    this.proportionWall = (this.canvas.height/2)/(this.canvas.width*0.1);
+    
   }
 
   startLoop() {
@@ -64,13 +65,18 @@ class Game1 {
     const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2);
     this.objects.push(cama);
 
+    const magicHut = new MagicHut(this.canvas,this.canvas.width*0.1,this.canvas.height-50, 50,50,textObjetoPrueba3);
+    this.objects.push(magicHut);
+
+
   }
 
   checkAllCollisions() {
     //this.player.checkScreen();
     this.objects.forEach((object, index) => {
       if (this.player1.checkCollisionObject(object)) { //una vez estamos pegados al objeto mostramos su texto asociado
-        if(this.objects[index].showTest())this.isGameOver = true; 
+        if(this.objects[index].showTest() && this.player1.getHut())this.isGameOver = true;
+        else if(this.objects[index] instanceof MagicHut) this.player1.setHut(); 
         
       }
     });

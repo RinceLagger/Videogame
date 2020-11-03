@@ -14,7 +14,8 @@ class Player1 {
     this.objectiveX = 0;
     this.objectiveY = 0;
     this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
-    
+    this.magicHut = false;
+
     
   }
 
@@ -168,6 +169,15 @@ class Player1 {
     }
 
     return false;
+  }
+
+
+  setHut(){
+    this.magicHut = true;
+  }
+
+  getHut(){
+    return this.magicHut;
   }
 
 }

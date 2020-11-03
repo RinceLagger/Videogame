@@ -64,4 +64,33 @@ class Object {
 
 
   }
+
+
+  class MagicHut extends Object {
+    constructor(canvas, x,y,sizeX, sizeY,text) {
+    super(canvas, x,y,sizeX, sizeY,text);    
+    
+    }
+
+
+    showTest(){//muestra los comentarios de los objetos al clickar sobre ellos
+        
+        
+        let innerText = this.text[this.indexTest];
+        this.textContainer.innerText = innerText;
+        
+        this.indexTest++;
+    
+        if(this.indexTest>=this.text.length)this.indexTest=0;
+
+        
+    }
+  
+    findHut(){
+        
+        return true;
+    }
+
+
+  }
   
