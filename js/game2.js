@@ -8,11 +8,12 @@ class Game2 {
     this.followers =[];
     this.enemies = [];
     this.isGameOver = false;
+    this.hater; //eliminar prueba
   }
 
   startLoop() {
     this.player = new Player2(this.canvas, 3);
-
+    this.hater = new Hater(this.canvas, 500,500, this.player.getX(),this.player.getY() );
     const loop = () => {
     //   if (Math.random() > 0.97) {
     //     const y = Math.random() * this.canvas.height;
@@ -33,6 +34,7 @@ class Game2 {
 
   updateCanvas() {
     this.player.update();
+    this.hater.update();
     // this.enemies.forEach((enemy) => {
     //   enemy.update();
     // });
@@ -44,6 +46,7 @@ class Game2 {
 
   drawCanvas() {
     this.player.draw();
+    this.hater.draw();
     // this.enemies.forEach((enemy) => {
     //   enemy.draw();
     // });

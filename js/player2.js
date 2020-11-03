@@ -64,4 +64,11 @@ class Player2 {
   loseLive() {
     this.lives--;
   }
+
+  getX(){
+    return this.x;
+  }
+  getY(){
+    return this.y;
+  }
 }
