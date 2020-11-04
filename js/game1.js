@@ -3,6 +3,8 @@ const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más
 const textObjetoPrueba2 = ["Esto es una cama"];
 const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto"];
 
+
+
 class Game1 {
   constructor(canvas) {
     this.canvas = canvas;
@@ -10,18 +12,20 @@ class Game1 {
     this.player1;
     this.objects = [];
     this.isGameOver = false;
-
+    this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
+    this.imgFrente =[];
     
   }
 
   startLoop() {
     this.player1 = new Player1(this.canvas);
     this.createRoom();//generamos la habitación y objetos
+    this.createAnimations(); //generamos animaciones personaje
+    let time = 0;
+    
+
     const loop = () => {
-    //   if (Math.random() > 0.97) {
-    //     const y = Math.random() * this.canvas.height;
-    //     this.enemies.push(new Enemy(this.canvas, y));
-    //   }
+   
 
       this.checkAllCollisions();
       this.updateCanvas();
@@ -30,6 +34,16 @@ class Game1 {
 
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
+        time++;
+        if(time===10){
+          time=0;
+          if(this.player1.directionY!=0 ||this.player1.directionX!=0 ){
+           this.player1.changeAnimation();
+          }
+
+        }
+
+
       }else{
         this.onGame2(); //llamamos a la callback para pasar a game2
       }
@@ -49,16 +63,50 @@ class Game1 {
 
   drawCanvas() {
 
+    
+
+    /*----dibujamos las líneas limitadoras de la habitación en función del tamaño del canvas-----*/
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.canvas.width*0.1, 0);
+    this.ctx.lineTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.stroke();
+    
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.canvas.width*0.9, 0);
+    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.stroke();
+    
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.stroke();
+
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.lineTo(0, this.canvas.height);
+    this.ctx.stroke();
+
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.lineTo(this.canvas.width, this.canvas.height);
+    this.ctx.stroke();
+
+    /*----------------------------------------------------------------------*/
+
     this.objects.forEach((object) => {
       object.draw();
     });
 
     this.player1.draw();
 
+    //this.ctx.drawImage(img,this.canvas.width/2-50, this.canvas.height/2, 100, 200);
 
   }
 
   createRoom(){
+
+
+
     const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2, 50,50,textObjetoPrueba);
     this.objects.push(ordenador);
 
@@ -68,11 +116,19 @@ class Game1 {
     const magicHut = new MagicHut(this.canvas,this.canvas.width*0.1,this.canvas.height-50, 50,50,textObjetoPrueba3);
     this.objects.push(magicHut);
 
+  }
 
+  createAnimations(){
+    
+      this.imgFrente.push(imgFrente1);
+      this.imgFrente.push(imgFrente2);
+      this.imgFrente.push(imgFrente3);
+      this.imgFrente.push(imgFrente4);
+      this.imgFrente.push(imgFrente5);
   }
 
   checkAllCollisions() {
-    //this.player.checkScreen();
+    
     this.objects.forEach((object, index) => {
       if (this.player1.checkCollisionObject(object)) { //una vez estamos pegados al objeto mostramos su texto asociado
         if(this.objects[index].showTest() && this.player1.getHut())this.isGameOver = true;

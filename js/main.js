@@ -134,7 +134,7 @@ function main() {
         </div> 
         `);
 
-        setTimeout(buildSplashScreen,5000);
+        
 
     }  
     
