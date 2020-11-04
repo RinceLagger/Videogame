@@ -13,12 +13,21 @@ class Game2 {
 
   startLoop() {
     this.player = new Player2(this.canvas, 3);
-    this.hater = new Hater(this.canvas, 500,500, this.player.getX(),this.player.getY() );
+
+
     const loop = () => {
-    //   if (Math.random() > 0.97) {
-    //     const y = Math.random() * this.canvas.height;
-    //     this.enemies.push(new Enemy(this.canvas, y));
-    //   }
+      if (Math.random() > 0.97) { //generamos la aparición random de haters
+      const y = Math.floor(Math.random() * this.canvas.height);
+      const x = Math.floor(Math.random() * this.canvas.width);
+        this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY()));
+      }
+
+    if (Math.random() > 0.98) { //generamos la aparición random de followers con menos probabilidad
+        const y = Math.floor(Math.random() * this.canvas.height);
+        const x = Math.floor(Math.random() * this.canvas.width);
+          this.followers.push(new Follower(this.canvas,x, y));
+     }
+
 
       this.checkAllCollisions();
       this.updateCanvas();
@@ -34,10 +43,10 @@ class Game2 {
 
   updateCanvas() {
     this.player.update();
-    this.hater.update();
-    // this.enemies.forEach((enemy) => {
-    //   enemy.update();
-    // });
+    // this.hater.update();
+    this.enemies.forEach((hater) => {
+      hater.update();
+    });
   }
 
   clearCanvas() {
@@ -46,24 +55,37 @@ class Game2 {
 
   drawCanvas() {
     this.player.draw();
-    this.hater.draw();
-    // this.enemies.forEach((enemy) => {
-    //   enemy.draw();
-    // });
+  // this.hater.draw();
+    this.enemies.forEach((hater) => {
+      hater.draw();
+    });
+    this.followers.forEach((follower) => {
+      follower.draw();
+    });
   }
 
   checkAllCollisions() {
     this.player.checkScreen();
-    // this.enemies.forEach((enemy, index) => {
-    //   if (this.player.checkCollisionEnemy(enemy)) {
-    //     this.player.loseLive();
-    //     this.enemies.splice(index, 1);
-    //     if (this.player.lives === 0) {
-    //       this.isGameOver = true;
-    //       this.onGameOver();
-    //     }
-    //   }
-    // });
+    this.enemies.forEach((hater, index) => {
+      if (this.player.checkCollisionEnemy(hater)) {
+        //this.player.loseLive();
+        this.enemies.splice(index, 1);
+        // if (this.player.lives === 0) {
+        //   this.isGameOver = true;
+        //   this.onGameOver();
+        // }
+      }
+    });
+    this.followers.forEach((follower, index) => {
+      if (this.player.checkCollisionEnemy(follower)) {
+        //this.player.loseLive();
+        this.followers.splice(index, 1);
+        // if (this.player.lives === 0) {
+        //   this.isGameOver = true;
+        //   this.onGameOver();
+        // }
+      }
+    });
   }
 
 //   gameOverCallback(callback) {
