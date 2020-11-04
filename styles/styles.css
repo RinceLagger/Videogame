@@ -46,3 +46,17 @@ canvas{
     border: 1px solid red;
     
 }
+
+.game-win .imageContainer{
+    background-color:green;
+    width:90%;
+    height: 800px;
+
+}
+
+.game-over .imageContainer{
+    background-color:black;
+    width:90%;
+    height: 800px;
+
+}

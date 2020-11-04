@@ -8,7 +8,7 @@ class Game2 {
     this.followers =[];
     this.enemies = [];
     this.isGameOver = false;
-    this.timeLeft =60;
+    this.timeLeft =30;
     this.score = 0;
   }
 
@@ -40,6 +40,11 @@ class Game2 {
         if(time===100){ //cada segundo que no se haya terminado el juego, resto un segundo al tiempo de juego
             this.timeLeft--;
             time = 0;
+            if(this.timeLeft===0){ //si se acaba el tiempo antes de conseguir un número suficiente de subscriptores
+              this.isGameOver =true;
+              this.onGameOver();
+
+            }
         }
       }
     };
@@ -75,7 +80,7 @@ class Game2 {
 
     this.ctx.fillStyle = 'blue';
     this.ctx.font = '30px Arial';
-    this.ctx.fillText(`Score: ${this.score}/100`,this.canvas.width -300,60);
+    this.ctx.fillText(`Subscribers: ${this.score}/100K`,this.canvas.width -300,60);
   }
 
   checkAllCollisions() {
@@ -84,11 +89,8 @@ class Game2 {
       if (this.player.checkCollisionEnemy(hater)) {
         
         this.enemies.splice(index, 1);
-        this.score--;
-        // if (this.player.lives === 0) {
-        //   this.isGameOver = true;
-        //   this.onGameOver();
-        // }
+        if(this.score>0)this.score--;
+        
       }
     });
     this.followers.forEach((follower, index) => {
@@ -96,15 +98,22 @@ class Game2 {
         
         this.followers.splice(index, 1);
         this.score++;
-        // if (this.player.lives === 0) {
-        //   this.isGameOver = true;
-        //   this.onGameOver();
-        // }
+        if (this.score===20) { 
+          this.isGameOver = true;
+          this.onGameWin(); //ganamos al alcanzar los seguidores
+          
+        }
       }
     });
   }
 
-//   gameOverCallback(callback) {
-//     this.onGameOver = callback;
-//   }
+  gameWin(callback){
+    this.onGameWin = callback;
+  }
+
+  gameOver(callback){
+    this.onGameOver = callback;
+  }
+
+
 }

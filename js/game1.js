@@ -31,7 +31,7 @@ class Game1 {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
       }else{
-        this.onGame2();
+        this.onGame2(); //llamamos a la callback para pasar a game2
       }
     };
 

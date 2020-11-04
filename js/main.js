@@ -103,9 +103,40 @@ function main() {
           };
       
           document.addEventListener("keydown", setPlayerDirection);
+
+          game2.gameWin(buildWinScreen);  
+          game2.gameOver(buildGameOverScreen);  
+
           game2.startLoop();
 
     }   
+
+
+
+    function  buildWinScreen() {//genera pantalla victoria
+        buildDom(`
+        <div class="game-win">
+        <div class="imageContainer"></div>
+        
+        </div> 
+        `);
+
+        setTimeout(buildSplashScreen,5000);
+
+    }   
+
+    
+    function  buildGameOverScreen() {//genera pantalla victoria
+        buildDom(`
+        <div class="game-over">
+        <div class="imageContainer"></div>
+        
+        </div> 
+        `);
+
+        setTimeout(buildSplashScreen,5000);
+
+    }  
     
 
 
