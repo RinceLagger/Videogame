@@ -8,12 +8,13 @@ class Game2 {
     this.followers =[];
     this.enemies = [];
     this.isGameOver = false;
-    this.hater; //eliminar prueba
+    this.timeLeft =60;
+    this.score = 0;
   }
 
   startLoop() {
     this.player = new Player2(this.canvas, 3);
-
+    let time = 0;
 
     const loop = () => {
       if (Math.random() > 0.97) { //generamos la aparición random de haters
@@ -35,6 +36,11 @@ class Game2 {
       this.drawCanvas();
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
+        time++;
+        if(time===100){ //cada segundo que no se haya terminado el juego, resto un segundo al tiempo de juego
+            this.timeLeft--;
+            time = 0;
+        }
       }
     };
 
@@ -54,22 +60,31 @@ class Game2 {
   }
 
   drawCanvas() {
+
     this.player.draw();
-  // this.hater.draw();
     this.enemies.forEach((hater) => {
       hater.draw();
     });
     this.followers.forEach((follower) => {
       follower.draw();
     });
+    /*----dibujamos el marcador con el tiempo---*/
+    this.ctx.fillStyle = 'orange';
+    this.ctx.font = '30px Arial';
+    this.ctx.fillText(`Time Left: ${this.timeLeft} s`,this.canvas.width -300,30);
+
+    this.ctx.fillStyle = 'blue';
+    this.ctx.font = '30px Arial';
+    this.ctx.fillText(`Score: ${this.score}/100`,this.canvas.width -300,60);
   }
 
   checkAllCollisions() {
     this.player.checkScreen();
     this.enemies.forEach((hater, index) => {
       if (this.player.checkCollisionEnemy(hater)) {
-        //this.player.loseLive();
+        
         this.enemies.splice(index, 1);
+        this.score--;
         // if (this.player.lives === 0) {
         //   this.isGameOver = true;
         //   this.onGameOver();
@@ -78,8 +93,9 @@ class Game2 {
     });
     this.followers.forEach((follower, index) => {
       if (this.player.checkCollisionEnemy(follower)) {
-        //this.player.loseLive();
+        
         this.followers.splice(index, 1);
+        this.score++;
         // if (this.player.lives === 0) {
         //   this.isGameOver = true;
         //   this.onGameOver();
