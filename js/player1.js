@@ -92,12 +92,13 @@ class Player1 {
 
   checkSzenario() { //comprueba que no se salga el personaje de la escena
     //console.log(this.y - this.sizeY / 2 )
-    if (this.y +this.sizeY / 4 <= this.canvas.height/2) {
-      this.y = this.canvas.height/2 - this.sizeY/4;
+    if (this.y /*+this.sizeY / 4*/ <= this.canvas.height/2) {
+      this.y = this.canvas.height/2 /*- this.sizeY/4*/;
+      if(this.directionX===0)this.directionY=0;
      // console.log(this.y)
     }else if(this.y + this.sizeY / 2 >= this.canvas.height){
       this.y = this.canvas.height - this.sizeY/2;
-
+      if(this.directionX===0)this.directionY=0;
     } 
     //comprobamos limites de pared izquierda
     const posWallIzq = Math.abs((this.x - this.sizeX)/(this.canvas.height -(this.y + this.sizeY/2)));
@@ -135,7 +136,7 @@ class Player1 {
     const collideRight = this.x + this.sizeX / 2 > object.x - object.sizeX / 2;    
     const collideLeft = this.x - this.sizeX / 2 < object.x + object.sizeX / 2;
     const collideTop = this.y + this.sizeY / 2 > object.y - object.sizeY / 2;
-    const collideBottom = this.y + this.sizeY / 4  < object.y + object.sizeY / 2;
+    const collideBottom = this.y /*+ this.sizeY / 4*/  < object.y + object.sizeY / 2;
 
 
     
