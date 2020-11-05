@@ -37,9 +37,16 @@ class Game1 {
         time++;
         if(time===10){
           time=0;
-          if(this.player1.directionY!=0 ||this.player1.directionX!=0 ){
-           this.player1.changeAnimation();
+          if(this.player1.directionY!=0 /*&& this.player1.directionX!=0*/ ){
+           this.player1.changeAnimationFront();
           }
+          else if(this.player1.directionY===0 && this.player1.directionX === -1 ){
+            this.player1.changeAnimationFront();
+           }
+          else if(this.player1.directionY===0 && this.player1.directionX === 1 ){
+            this.player1.changeAnimationLat1();
+            console.log("lateral");
+           } 
 
         }
 

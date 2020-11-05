@@ -1,15 +1,25 @@
 "use strict";
 
 var imgFrente1 = new Image(); 
-imgFrente1 .src = './images/DeFrente1.png'; 
+imgFrente1.src = './images/DeFrente1.png'; 
 var imgFrente2 = new Image(); 
-imgFrente2 .src = './images/DeFrente2.png'; 
+imgFrente2.src = './images/DeFrente2.png'; 
 var imgFrente3 = new Image(); 
-imgFrente3 .src = './images/DeFrente3.png'; 
+imgFrente3.src = './images/DeFrente3.png'; 
 var imgFrente4 = new Image(); 
-imgFrente4 .src = './images/DeFrente4.png'; 
+imgFrente4.src = './images/DeFrente4.png'; 
 var imgFrente5 = new Image(); 
-imgFrente5 .src = './images/DeFrente5.png'; 
+imgFrente5.src = './images/DeFrente5.png'; 
+var imgLateral1 = new Image(); 
+imgLateral1.src = './images/Lateral1.png'; 
+var imgLateral2 = new Image(); 
+imgLateral2.src = './images/Lateral2.png'; 
+var imgLateral3 = new Image(); 
+imgLateral3.src = './images/Lateral3.png'; 
+var imgLateral4 = new Image(); 
+imgLateral4.src = './images/Lateral4.png'; 
+var imgLateral5 = new Image(); 
+imgLateral5.src = './images/Lateral5.png'; 
 
 class Player1 {
   constructor(canvas) {
@@ -28,12 +38,19 @@ class Player1 {
     this.magicHut = false;
     this.indexImg =0;
     this.imgFront = [imgFrente1,imgFrente2,imgFrente3,imgFrente4,imgFrente5];
-    this.currentFrontImg = this.imgFront[0];
-
+    this.currentImg = this.imgFront[0];
+    this.imgLat1 = [imgLateral1,imgLateral2,imgLateral3,imgLateral4,imgLateral5];
+    //this.currentLat1Img = this.imgLat1[0];
   }
 
-  changeAnimation(){
-    this.currentFrontImg = this.imgFront[this.indexImg];
+  changeAnimationFront(){
+    this.currentImg = this.imgFront[this.indexImg];
+    this.indexImg++;
+    if(this.indexImg>4)this.indexImg=0;
+    
+  }
+  changeAnimationLat1(){
+    this.currentImg = this.imgLat1[this.indexImg];
     this.indexImg++;
     if(this.indexImg>4)this.indexImg=0;
     
@@ -58,7 +75,7 @@ class Player1 {
     //   this.sizeY
     // );
 
-    this.ctx.drawImage(this.currentFrontImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
+    this.ctx.drawImage(this.currentImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
 
   }
 
