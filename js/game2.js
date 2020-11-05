@@ -15,6 +15,7 @@ class Game2 {
   startLoop() {
     this.player = new Player2(this.canvas, 3);
     let time = 0;
+    let timeLeftFollower =0; 
 
     const loop = () => {
       if (Math.random() > 0.97) { //generamos la aparición random de haters
@@ -37,6 +38,7 @@ class Game2 {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
         time++;
+        timeLeftFollower++;
         if(time===100){ //cada segundo que no se haya terminado el juego, resto un segundo al tiempo de juego
             this.timeLeft--;
             time = 0;
@@ -46,6 +48,12 @@ class Game2 {
 
             }
         }
+
+        if(timeLeftFollower===120){ //cada aprox 1 segundo segundos hacemos desaparecer el follower más antiguo aparecido
+          this.followers.shift(); 
+          timeLeftFollower =0;
+        }
+
       }
     };
 
