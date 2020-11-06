@@ -114,13 +114,13 @@ class Game1 {
 
 
 
-    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2, 50,50,textObjetoPrueba);
+    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2, this.canvas.width/3,textObjetoPrueba,0);
     this.objects.push(ordenador);
 
-    const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2);
-    this.objects.push(cama);
+    // const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2, 0);
+    // this.objects.push(cama);
 
-    const magicHut = new MagicHut(this.canvas,this.canvas.width*0.1,this.canvas.height-50, 50,50,textObjetoPrueba3);
+    const magicHut = new MagicHut(this.canvas,this.canvas.width*0.1,this.canvas.height-50,50,textObjetoPrueba3, 0);
     this.objects.push(magicHut);
 
   }
