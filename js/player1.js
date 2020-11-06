@@ -119,7 +119,11 @@ class Player1 {
        
 
       if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
-      if(Math.abs(this.y-this.objectiveY)<2){
+      // if(Math.abs(this.y-this.objectiveY)<2){
+      //   this.directionY =0;
+      //   //console.log("paso por cero");//
+      // }
+      if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
         this.directionY =0;
         //console.log("paso por cero");//
       }
@@ -128,8 +132,8 @@ class Player1 {
 
   checkSzenario() { //comprueba que no se salga el personaje de la escena
     //console.log(this.y - this.sizeY / 2 )
-    if (this.y +this.sizeY / 6 <= this.canvas.height/2) {
-      this.y = this.canvas.height/2 /*- this.sizeY/4*/;
+    if (this.y +this.sizeY / 4 <= this.canvas.height/2) {
+      this.y = this.canvas.height/2 - this.sizeY/4;
       if(this.directionX===0)this.directionY=0;
      // console.log(this.y)
     }else if(this.y + this.sizeY / 2 >= this.canvas.height){
