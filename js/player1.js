@@ -95,6 +95,11 @@ class Player1 {
     //   this.sizeY
     // );
 
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.x, this.y);
+    this.ctx.lineTo(this.x+2, this.y+2);
+    this.ctx.stroke();
+
     this.ctx.drawImage(this.currentImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
 
   }
@@ -104,28 +109,52 @@ class Player1 {
 
     this.objectiveX =event.offsetX;
     this.objectiveY = event.offsetY;
-    //console.log(this.objectiveX, this.objectiveY)   
+      
     if((this.x - this.objectiveX)<0) this.directionX = 1;
     else if ((this.x - this.objectiveX)>0) this.directionX = -1;
     else this.directionX = 0;
     
-    if((this.y - this.objectiveY)<0) this.directionY = 1;
-    else if ((this.y - this.objectiveY)>0) this.directionY = -1;
+    if(((this.y+this.sizeY / 4)-this.objectiveY)<0) this.directionY = 1;
+    else if (((this.y+this.sizeY / 4)-this.objectiveY)>0) this.directionY = -1;
     else this.directionY = 0;
+
+    console.log("directionX :", this.directionX,"X:",this.x,"objx: ",this.objectiveX ,"X-objX :",this.x - this.objectiveX); 
+    console.log("directionY :", this.directionY,"Y:",this.y,"objx: ",this.objectiveY, "Y-objY :",this.y - this.objectiveY); 
   }
   
 
 
   checkObjective(){ //comprueba si estás cerca de la posición indicada y para al jugador
 
-    if(this.directionX!=0 && this.directionY !=0 && this.x< 3* this.canvas.width/4 && this.x>this.canvas.width/4  ){//movimiento en ambos ejes y zona central de la habitación
-      this.speedX =0; //nos movemos inicialmente en el eje Y
-      this.condition = true;
-    }
-    else if(this.condition) {
-      this.speedX =1;
-      this.condition = false;
-    }
+    // if(this.directionX!=0 && this.directionY !=0 && this.x< 3* this.canvas.width/4 && this.x>this.canvas.width/4 || this.directionX!=0 && this.directionY !=0 && this.y< 3*this.canvas.height /4   ){//movimiento en ambos ejes y zona central de la habitación
+    //   this.speedX =0; //nos movemos inicialmente en el eje Y
+    //   this.condition = true;
+    //   console.log("zona central");
+    // }
+    // else if(this.condition) {
+    //   this.speedX =1;
+    //   this.condition = false;
+    // }
+
+    // else if(this.directionX!=0 && this.directionY !=0 && this.y> 3*this.canvas.height /4 ){//movimiento en ambos ejes zona zuperior del mapa y laterales
+    //   this.speedY =0; //nos movemos inicialmente en el eje Y
+    //   this.condition2 = true;
+    //   console.log("zona lateral abajo");
+    // }
+    // else if(this.condition2) {
+    //   this.speedY =1;
+    //   this.condition2 = false;
+    // }
+
+    // else if(this.directionX!=0 && this.directionY !=0 && this.y> 3*this.canvas.height /4 ){//movimiento en ambos ejes zona inferior del mapa y laterales
+    //   this.speedY =0; //nos movemos inicialmente en el eje X
+    //   this.condition3 = true;
+    //   console.log("zona lateral abajo");
+    // }
+    // else if(this.condition2) {
+    //   this.speedY =1;
+    //   this.condition3 = false;
+    // }
        
 
       if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
