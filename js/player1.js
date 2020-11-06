@@ -151,7 +151,7 @@ class Player1 {
       /*if(this.directionX===0)*/this.directionY=0;
     } 
     //comprobamos limites de pared izquierda
-    const posWallIzq = Math.abs((this.x - this.sizeX)/(this.canvas.height -(this.y + this.sizeY/2)));
+    const posWallIzq = Math.abs((this.x - this.sizeX/2)/(this.canvas.height -(this.y + this.sizeY/2)));
     // console.log(this.canvas.height );
     // console.log((this.y + this.sizeY));
     // console.log(this.proportionWall);
@@ -163,7 +163,7 @@ class Player1 {
       this.y = this.y +3;
     }
     //comprobamos limites de pared derecha
-    const posWallDer = Math.abs((this.canvas.width-(this.x + this.sizeX))/(this.canvas.height -(this.y + this.sizeY/2)));
+    const posWallDer = Math.abs((this.canvas.width-(this.x + this.sizeX/2))/(this.canvas.height -(this.y + this.sizeY/2)));
     // console.log(this.canvas.height );
     // console.log((this.y + this.sizeY));
     // console.log(this.proportionWall);
