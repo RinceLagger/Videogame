@@ -74,27 +74,27 @@ class Game1 {
 
     /*----dibujamos las líneas limitadoras de la habitación en función del tamaño del canvas-----*/
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.1, 0);
-    this.ctx.lineTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.05, 0);
+    this.ctx.lineTo(this.canvas.width*0.05, this.canvas.height/2);
     this.ctx.stroke();
     
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.9, 0);
-    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.95, 0);
+    this.ctx.lineTo(this.canvas.width*0.95, this.canvas.height/2);
     this.ctx.stroke();
     
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
-    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.05, this.canvas.height/2);
+    this.ctx.lineTo(this.canvas.width*0.95, this.canvas.height/2);
     this.ctx.stroke();
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.05, this.canvas.height/2);
     this.ctx.lineTo(0, this.canvas.height);
     this.ctx.stroke();
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.9, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.95, this.canvas.height/2);
     this.ctx.lineTo(this.canvas.width, this.canvas.height);
     this.ctx.stroke();
 

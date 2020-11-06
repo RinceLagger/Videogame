@@ -40,12 +40,13 @@ class Player1 {
     this.ctx = this.canvas.getContext("2d");
     this.x = this.canvas.width/4 - this.sizeX / 2;
     this.y = this.canvas.height - this.canvas.height/4;
-    this.speed = 1;
+    this.speedX = 1;
+    this.speedY = 1;
     this.directionX = 0;
     this.directionY = 0;
     this.objectiveX = 0;
     this.objectiveY = 0;
-    this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
+    this.proportionWall =Math.abs((this.canvas.width*0.05)/ (this.canvas.height/2));
     this.magicHut = false;
     this.indexImg =0;
     this.imgFront = [imgFrente1,imgFrente2,imgFrente3,imgFrente4,imgFrente5];
@@ -79,8 +80,8 @@ class Player1 {
 
   update() {
     
-    this.y = this.y + this.directionY * this.speed;
-    this.x = this.x + this.directionX * this.speed;
+    this.y = this.y + this.directionY * this.speedY;
+    this.x = this.x + this.directionX * this.speedX;
     this.checkObjective(); 
     this.checkSzenario(); 
     }
@@ -116,6 +117,15 @@ class Player1 {
 
 
   checkObjective(){ //comprueba si estás cerca de la posición indicada y para al jugador
+
+    if(this.directionX!=0 && this.directionY !=0 && this.x< 3* this.canvas.width/4 && this.x>this.canvas.width/4  ){//movimiento en ambos ejes y zona central de la habitación
+      this.speedX =0; //nos movemos inicialmente en el eje Y
+      this.condition = true;
+    }
+    else if(this.condition) {
+      this.speedX =1;
+      this.condition = false;
+    }
        
 
       if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
@@ -134,11 +144,11 @@ class Player1 {
     //console.log(this.y - this.sizeY / 2 )
     if (this.y +this.sizeY / 4 <= this.canvas.height/2) {
       this.y = this.canvas.height/2 - this.sizeY/4;
-      if(this.directionX===0)this.directionY=0;
+      /*if(this.directionX===0)*/this.directionY=0;
      // console.log(this.y)
     }else if(this.y + this.sizeY / 2 >= this.canvas.height){
       this.y = this.canvas.height - this.sizeY/2;
-      if(this.directionX===0)this.directionY=0;
+      /*if(this.directionX===0)*/this.directionY=0;
     } 
     //comprobamos limites de pared izquierda
     const posWallIzq = Math.abs((this.x - this.sizeX)/(this.canvas.height -(this.y + this.sizeY/2)));
