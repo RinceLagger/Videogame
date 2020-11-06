@@ -1,5 +1,6 @@
 "use strict";
 
+/*---hacemos la carga de imágenes-----*/
 var imgFrente1 = new Image(); 
 imgFrente1.src = './images/DeFrente1.png'; 
 var imgFrente2 = new Image(); 
@@ -20,6 +21,16 @@ var imgLateral4 = new Image();
 imgLateral4.src = './images/Lateral4.png'; 
 var imgLateral5 = new Image(); 
 imgLateral5.src = './images/Lateral5.png'; 
+var imgLateral1_v = new Image(); 
+imgLateral1_v.src = './images/Lateral1_v.png'; 
+var imgLateral2_v = new Image(); 
+imgLateral2_v.src = './images/Lateral2_v.png'; 
+var imgLateral3_v = new Image(); 
+imgLateral3_v.src = './images/Lateral3_v.png'; 
+var imgLateral4_v = new Image(); 
+imgLateral4_v.src = './images/Lateral4_v.png'; 
+var imgLateral5_v = new Image(); 
+imgLateral5_v.src = './images/Lateral5_v.png'; 
 
 class Player1 {
   constructor(canvas) {
@@ -39,7 +50,8 @@ class Player1 {
     this.indexImg =0;
     this.imgFront = [imgFrente1,imgFrente2,imgFrente3,imgFrente4,imgFrente5];
     this.currentImg = this.imgFront[0];
-    this.imgLat1 = [imgLateral1,imgLateral2,imgLateral3,imgLateral4,imgLateral5];
+    this.imgRight = [imgLateral1,imgLateral2,imgLateral3,imgLateral4,imgLateral5];
+    this.imgLeft = [imgLateral1_v,imgLateral2_v,imgLateral3_v,imgLateral4_v,imgLateral5_v];
     //this.currentLat1Img = this.imgLat1[0];
   }
 
@@ -49,8 +61,15 @@ class Player1 {
     if(this.indexImg>4)this.indexImg=0;
     
   }
-  changeAnimationLat1(){
-    this.currentImg = this.imgLat1[this.indexImg];
+  changeAnimationRight(){
+    this.currentImg = this.imgRight[this.indexImg];
+    this.indexImg++;
+    if(this.indexImg>4)this.indexImg=0;
+    
+  }
+
+  changeAnimationLeft(){
+    this.currentImg = this.imgLeft[this.indexImg];
     this.indexImg++;
     if(this.indexImg>4)this.indexImg=0;
     
@@ -109,7 +128,7 @@ class Player1 {
 
   checkSzenario() { //comprueba que no se salga el personaje de la escena
     //console.log(this.y - this.sizeY / 2 )
-    if (this.y /*+this.sizeY / 4*/ <= this.canvas.height/2) {
+    if (this.y +this.sizeY / 6 <= this.canvas.height/2) {
       this.y = this.canvas.height/2 /*- this.sizeY/4*/;
       if(this.directionX===0)this.directionY=0;
      // console.log(this.y)
@@ -153,7 +172,7 @@ class Player1 {
     const collideRight = this.x + this.sizeX / 2 > object.x - object.sizeX / 2;    
     const collideLeft = this.x - this.sizeX / 2 < object.x + object.sizeX / 2;
     const collideTop = this.y + this.sizeY / 2 > object.y - object.sizeY / 2;
-    const collideBottom = this.y /*+ this.sizeY / 4*/  < object.y + object.sizeY / 2;
+    const collideBottom = this.y + this.sizeY / 6  < object.y + object.sizeY / 2;
 
 
     

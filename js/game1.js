@@ -41,11 +41,11 @@ class Game1 {
            this.player1.changeAnimationFront();
           }
           else if(this.player1.directionY===0 && this.player1.directionX === -1 ){
-            this.player1.changeAnimationFront();
+            this.player1.changeAnimationLeft();
            }
           else if(this.player1.directionY===0 && this.player1.directionX === 1 ){
-            this.player1.changeAnimationLat1();
-            console.log("lateral");
+            this.player1.changeAnimationRight();
+            //console.log("lateral");
            } 
 
         }
