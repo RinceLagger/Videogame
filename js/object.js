@@ -6,6 +6,8 @@ var imgCofre = new Image();
 imgCofre.src = './images/cofre_sombrero.png';
 var imgCama = new Image();
 imgCama.src = './images/cama.png';
+var imgArmario = new Image();
+imgArmario.src = './images/armario.png';
 
 class Object {
     constructor(canvas, x,y,sizeX,sizeY,text,index) {
@@ -18,7 +20,7 @@ class Object {
       this.text = text;
       this.textContainer = document.querySelector("#dialogs p");
       this.indexTest = 0;
-      this.images = [imgMesa, imgCofre,imgCama];
+      this.images = [imgMesa, imgCofre,imgCama, imgArmario];
       this.index = index;
     }
   

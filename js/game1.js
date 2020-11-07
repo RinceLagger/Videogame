@@ -2,7 +2,7 @@
 const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
 const textObjetoPrueba2 = ["Esto es una cama"];
 const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto!"];
-
+const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!"];
 
 
 class Game1 {
@@ -122,6 +122,9 @@ class Game1 {
 
     const cama = new Object(this.canvas,this.canvas.width-this.canvas.width/7,this.canvas.height - this.canvas.height/8, this.canvas.width/4,this.canvas.height/4,textObjetoPrueba2, 2);
     this.objects.push(cama);
+
+    const armario = new Object(this.canvas,this.canvas.width-this.canvas.width/5,this.canvas.height/2-this.canvas.height/4+20, this.canvas.width/8,this.canvas.height/2-20,textObjetoPrueba4, 3);
+    this.objects.push(armario);
 
   }
 
