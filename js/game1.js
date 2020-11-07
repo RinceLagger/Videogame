@@ -114,7 +114,7 @@ class Game1 {
 
 
 
-    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2, this.canvas.width/3,textObjetoPrueba,0);
+    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2-this.canvas.height/9, this.canvas.width/3,textObjetoPrueba,0);
     this.objects.push(ordenador);
 
     // const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2, 0);
