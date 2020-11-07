@@ -5,6 +5,9 @@ const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya e
 const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!"];
 
 
+var room = new Image(); 
+room.src = './images/Room.png';
+
 class Game1 {
   constructor(canvas) {
     this.canvas = canvas;
@@ -21,7 +24,7 @@ class Game1 {
     this.player1 = new Player1(this.canvas);
     this.createRoom();//generamos la habitación y objetos
     this.createAnimations(); //generamos animaciones personaje
-    let time = 0;
+    let time = 0; //variable para definir tiempo entre animaciones
     
 
     const loop = () => {
@@ -34,22 +37,8 @@ class Game1 {
 
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
-        time++;
-        if(time===10){
-          time=0;
-          if(this.player1.directionY!=0 /*&& this.player1.directionX!=0*/ ){
-           this.player1.changeAnimationFront();
-          }
-          else if(this.player1.directionY===0 && this.player1.directionX === -1 ){
-            this.player1.changeAnimationLeft();
-           }
-          else if(this.player1.directionY===0 && this.player1.directionX === 1 ){
-            this.player1.changeAnimationRight();
-            //console.log("lateral");
-           } 
 
-        }
-
+        time = this.changeMoveAnimations(time); //actualizamos animaciones de movimiento
 
       }else{
         this.onGame2(); //llamamos a la callback para pasar a game2
@@ -57,7 +46,31 @@ class Game1 {
     };
 
     window.requestAnimationFrame(loop);
+
   }
+
+  changeMoveAnimations(time){
+
+    time++;
+    if(time===10){
+      time=0;
+      if(this.player1.directionY!=0 /*&& this.player1.directionX!=0*/ ){
+       this.player1.changeAnimationFront();
+      }
+      else if(this.player1.directionY===0 && this.player1.directionX === -1 ){
+        this.player1.changeAnimationLeft();
+       }
+      else if(this.player1.directionY===0 && this.player1.directionX === 1 ){
+        this.player1.changeAnimationRight();
+        //console.log("lateral");
+       } 
+
+    }
+
+    return time;
+
+  }
+
 
   updateCanvas() {
     this.player1.update();
@@ -97,6 +110,10 @@ class Game1 {
     this.ctx.moveTo(this.canvas.width*0.9, this.canvas.height/2);
     this.ctx.lineTo(this.canvas.width, this.canvas.height);
     this.ctx.stroke();
+
+    /*------dibujamos fondo de la habitación--------------------*/
+
+    this.ctx.drawImage(room,0, 0, this.canvas.width, this.canvas.height);
 
     /*----------------------------------------------------------------------*/
 
