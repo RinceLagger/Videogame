@@ -1,7 +1,7 @@
 "use strict";
 const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
 const textObjetoPrueba2 = ["Esto es una cama"];
-const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto"];
+const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto!"];
 
 
 
@@ -109,7 +109,7 @@ class Game1 {
     //this.ctx.drawImage(img,this.canvas.width/2-50, this.canvas.height/2, 100, 200);
 
   }
-
+ 
   createRoom(){
 
 
