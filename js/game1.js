@@ -74,27 +74,27 @@ class Game1 {
 
     /*----dibujamos las líneas limitadoras de la habitación en función del tamaño del canvas-----*/
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.05, 0);
-    this.ctx.lineTo(this.canvas.width*0.05, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.1, 0);
+    this.ctx.lineTo(this.canvas.width*0.1, this.canvas.height/2);
     this.ctx.stroke();
     
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.95, 0);
-    this.ctx.lineTo(this.canvas.width*0.95, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.9, 0);
+    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
     this.ctx.stroke();
     
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.05, this.canvas.height/2);
-    this.ctx.lineTo(this.canvas.width*0.95, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
+    this.ctx.lineTo(this.canvas.width*0.9, this.canvas.height/2);
     this.ctx.stroke();
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.05, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.1, this.canvas.height/2);
     this.ctx.lineTo(0, this.canvas.height);
     this.ctx.stroke();
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.canvas.width*0.95, this.canvas.height/2);
+    this.ctx.moveTo(this.canvas.width*0.9, this.canvas.height/2);
     this.ctx.lineTo(this.canvas.width, this.canvas.height);
     this.ctx.stroke();
 
@@ -114,14 +114,14 @@ class Game1 {
 
 
 
-    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2-this.canvas.height/9, this.canvas.width/3,textObjetoPrueba,0);
+    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2-this.canvas.height/10, this.canvas.width/4,100,textObjetoPrueba,0);
     this.objects.push(ordenador);
 
-    // const cama = new Object(this.canvas,this.canvas.width/2,this.canvas.height-50, 100,50,textObjetoPrueba2, 0);
-    // this.objects.push(cama);
-
-    const magicHut = new MagicHut(this.canvas,this.canvas.width*0.1,this.canvas.height-50,50,textObjetoPrueba3, 0);
+    const magicHut = new MagicHut(this.canvas,this.canvas.width/24+this.canvas.width*0.1,this.canvas.height/2,this.canvas.width/12,this.canvas.width/12,textObjetoPrueba3, 1);
     this.objects.push(magicHut);
+
+    const cama = new Object(this.canvas,this.canvas.width-this.canvas.width/7,this.canvas.height - this.canvas.height/8, this.canvas.width/4,this.canvas.height/4,textObjetoPrueba2, 2);
+    this.objects.push(cama);
 
   }
 

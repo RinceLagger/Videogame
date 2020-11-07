@@ -2,11 +2,15 @@
 
 var imgMesa = new Image();
 imgMesa.src = './images/mesa.png';
+var imgCofre = new Image();
+imgCofre.src = './images/cofre_sombrero.png';
+var imgCama = new Image();
+imgCama.src = './images/cama.png';
 
 class Object {
-    constructor(canvas, x,y,sizeX,text,index) {
+    constructor(canvas, x,y,sizeX,sizeY,text,index) {
       this.sizeX = sizeX;
-      this.sizeY = sizeX;
+      this.sizeY = sizeY;
       this.canvas = canvas;
       this.ctx = this.canvas.getContext("2d");
       this.x = x; 
@@ -14,7 +18,7 @@ class Object {
       this.text = text;
       this.textContainer = document.querySelector("#dialogs p");
       this.indexTest = 0;
-      this.images = [imgMesa];
+      this.images = [imgMesa, imgCofre,imgCama];
       this.index = index;
     }
   
@@ -44,8 +48,8 @@ class Object {
 
 
   class Ordenador extends Object {
-    constructor(canvas, x,y,sizeX,text,index) {
-    super(canvas, x,y,sizeX,text,index); 
+    constructor(canvas, x,y,sizeX,sizeY,text,index) {
+    super(canvas, x,y,sizeX,sizeY,text,index); 
     this.sizeY = this.sizeX /2;   
     
     }
@@ -74,8 +78,8 @@ class Object {
 
 
   class MagicHut extends Object {
-    constructor(canvas, x,y,sizeX,text,index) {
-    super(canvas, x,y,sizeX,text,index);    
+    constructor(canvas, x,y,sizeX,sizeY,text,index) {
+    super(canvas, x,y,sizeX,sizeY,text,index);    
     
     }
 
