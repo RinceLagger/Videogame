@@ -5,7 +5,7 @@ imgMesa.src = './images/mesa.png';
 var imgCofre = new Image();
 imgCofre.src = './images/cofre_sombrero.png';
 var imgCama = new Image();
-imgCama.src = './images/cama.png';
+imgCama.src = './images/cama_turquesa.png';
 var imgArmario = new Image();
 imgArmario.src = './images/armario.png';
 
