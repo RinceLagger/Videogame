@@ -15,7 +15,7 @@ class Game1 {
     this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
     this.imgFrente =[];
     
-  }
+   }
 
   startLoop() {
     this.player1 = new Player1(this.canvas);
