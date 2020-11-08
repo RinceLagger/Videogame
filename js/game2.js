@@ -1,5 +1,8 @@
 "use strict";
 
+var room2 = new Image(); 
+room2.src = './images/game2_background.png';
+
 class Game2 {
   constructor(canvas) {
     this.canvas = canvas;
@@ -39,26 +42,41 @@ class Game2 {
         window.requestAnimationFrame(loop);
         time++;
         timeLeftFollower++;
-        if(time===100){ //cada segundo que no se haya terminado el juego, resto un segundo al tiempo de juego
-            this.timeLeft--;
-            time = 0;
-            if(this.timeLeft===0){ //si se acaba el tiempo antes de conseguir un número suficiente de subscriptores
-              this.isGameOver =true;
-              this.onGameOver();
-
-            }
-        }
-
-        if(timeLeftFollower===120){ //cada aprox 1 segundo segundos hacemos desaparecer el follower más antiguo aparecido
-          this.followers.shift(); 
-          timeLeftFollower =0;
-        }
+        
+        time = this.reduceTimeLeft(time);
+        timeLeftFollower = this.disappearFollower(timeLeftFollower);
 
       }
     };
 
     window.requestAnimationFrame(loop);
   }
+
+  reduceTimeLeft(time){
+
+    if(time===100){ //cada segundo que no se haya terminado el juego, resto un segundo al tiempo de juego
+      this.timeLeft--;
+      time = 0;
+      if(this.timeLeft===0){ //si se acaba el tiempo antes de conseguir un número suficiente de subscriptores
+        this.isGameOver =true;
+        this.onGameOver();
+
+      }
+    }
+        return time;
+  }
+
+  
+  disappearFollower(timeLeftFollower){
+    
+    if(timeLeftFollower===120){ //cada aprox 1 segundo segundos hacemos desaparecer el follower más antiguo aparecido
+      this.followers.shift(); 
+      timeLeftFollower =0;
+    }
+    return timeLeftFollower;
+
+  }
+
 
   updateCanvas() {
     this.player.update();
@@ -73,6 +91,8 @@ class Game2 {
   }
 
   drawCanvas() {
+
+    this.ctx.drawImage(room2,0, 0, this.canvas.width, this.canvas.height);
 
     this.player.draw();
     this.enemies.forEach((hater) => {

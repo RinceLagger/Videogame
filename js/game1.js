@@ -3,7 +3,7 @@ const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más
 const textObjetoPrueba2 = ["Esto es una cama"];
 const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto!"];
 const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!"];
-
+const textObjetoPrueba5 = ["Un croma del Ali Express! Vamos a grabar unos buenos gameplays yeah!"];
 
 var room = new Image(); 
 room.src = './images/Room.png';
@@ -142,6 +142,9 @@ class Game1 {
 
     const armario = new Object(this.canvas,this.canvas.width-this.canvas.width/5,this.canvas.height/2-this.canvas.height/4+20, this.canvas.width/8,this.canvas.height/2-20,textObjetoPrueba4, 3);
     this.objects.push(armario);
+
+    const croma = new Object(this.canvas,this.canvas.width/20+40,this.canvas.height-this.canvas.height*0.2-80, this.canvas.width/12,this.canvas.height*0.4,textObjetoPrueba5, 4);
+    this.objects.push(croma);
 
   }
 

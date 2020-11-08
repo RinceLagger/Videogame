@@ -1,4 +1,6 @@
-
+body{
+    background-color: rgb(137 24 30);
+}
 
 .game-intro{
     display: flex;
@@ -33,17 +35,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(137 24 30);
     
 } 
 .game-screen #dialogs{
     height: 20%;
     width: 90%;
-    background-color: cyan;
+    background-color: white;
 }
 
 canvas{
     margin-top: 5%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     
 }
 
@@ -59,4 +62,10 @@ canvas{
     width:90%;
     height: 800px;
 
+}
+
+#dialogs{
+    font-family: 'Press Start 2P', cursive;
+    border: solid 2px black;
+    padding: 5px 10px;
 }
