@@ -1,8 +1,12 @@
 "use strict";
 
+
+var imgHater = new Image(); 
+imgHater.src = './images/hater.png'; 
+
 class Hater {
   constructor(canvas, x, y, playerX, playerY) {
-    this.size = 20;
+    this.size = 50;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
@@ -36,8 +40,10 @@ class Hater {
   }
 
   draw() {
-    this.ctx.fillStyle = "red";
-    this.ctx.fillRect(this.x- this.size/2, this.y - this.size / 2, this.size, this.size);
+    // this.ctx.fillStyle = "red";
+    // this.ctx.fillRect(this.x- this.size/2, this.y - this.size / 2, this.size, this.size);
+
+    this.ctx.drawImage(imgHater,this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
   }
 
   setDirectionX() { //define la dirección en el eje X del hater. Si alcanza la posición X que tenía el player al originarse el hater, no se mueve más en ese eje

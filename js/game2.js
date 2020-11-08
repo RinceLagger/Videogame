@@ -19,6 +19,7 @@ class Game2 {
     this.player = new Player2(this.canvas, 3);
     let time = 0;
     let timeLeftFollower =0; 
+    let timeAnimPlayer = 0;
 
     const loop = () => {
       if (Math.random() > 0.97) { //generamos la aparición random de haters
@@ -42,10 +43,16 @@ class Game2 {
         window.requestAnimationFrame(loop);
         time++;
         timeLeftFollower++;
+        timeAnimPlayer++;
         
         time = this.reduceTimeLeft(time);
         timeLeftFollower = this.disappearFollower(timeLeftFollower);
 
+        if(timeAnimPlayer===10){
+          this.player.changeAnimation();
+          timeAnimPlayer=0;
+        
+        }
       }
     };
 

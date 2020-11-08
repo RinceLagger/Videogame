@@ -1,20 +1,22 @@
 body{
     background-color: rgb(137 24 30);
+    margin:0;
+    padding:0;
 }
 
 .game-intro{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    
     
 
 }
 
-.game-intro .imageContainer{
-    background-color:yellow;
-    width:90%;
-    height: 800px;
+.game-intro img{
+    
+    width:100%;
+    height:100%;
 
 }
 

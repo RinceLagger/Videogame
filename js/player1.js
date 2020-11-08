@@ -95,10 +95,10 @@ class Player1 {
     //   this.sizeY
     // );
 
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.x, this.y);
-    this.ctx.lineTo(this.x+2, this.y+2);
-    this.ctx.stroke();
+    // this.ctx.beginPath();
+    // this.ctx.moveTo(this.x, this.y);
+    // this.ctx.lineTo(this.x+2, this.y+2);
+    // this.ctx.stroke();
 
     this.ctx.drawImage(this.currentImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
 

@@ -13,7 +13,8 @@ function main() {
     function buildSplashScreen() {//genera pantalla inicio
         buildDom(`
             <div class="game-intro">
-                <div class="imageContainer"></div>
+            <img src="./images/Portada.png" alt="title">
+                
                 <button id="start-button">StartGame</button>
             </div>
             `);

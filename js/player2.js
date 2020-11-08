@@ -1,16 +1,32 @@
 "use strict";
 
+var img1 = new Image(); 
+img1.src = './images/anim1Game2.png'; 
+var img2 = new Image(); 
+img2.src = './images/anim2Game2.png'; 
+
 class Player2 {
   constructor(canvas, lives) {
-    this.size = 40;
+    this.sizeX = 40;
+    this.sizeY = 60;
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = 10 + this.size / 2;
+    this.x = 10 + this.sizeX / 2;
     this.y = this.canvas.height / 2;
     this.speed = 5;
     this.directionX = 0;
     this.directionY =0;
     this.lives = lives;
+    this.img = [img1,img2];
+    this.currentImg = this.img[0];
+    this.indexImg=0;
+  }
+
+  changeAnimation(){
+    this.currentImg = this.img[this.indexImg];
+    this.indexImg++;
+    if(this.indexImg>this.img.length-1)this.indexImg=0;
+    
   }
 
   update() {
@@ -19,13 +35,16 @@ class Player2 {
   }
 
   draw() {
-    this.ctx.fillStyle = "green";
-    this.ctx.fillRect(
-      this.x - this.size / 2,
-      this.y - this.size / 2,
-      this.size,
-      this.size
-    );
+    // this.ctx.fillStyle = "green";
+    // this.ctx.fillRect(
+    //   this.x - this.size / 2,
+    //   this.y - this.size / 2,
+    //   this.size,
+    //   this.size
+    // );
+
+
+    this.ctx.drawImage(this.currentImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
   }
 
   setDirectionX(direction) {
@@ -37,22 +56,22 @@ class Player2 {
   }
 
   checkScreen() {
-    if (this.y - this.size / 2 <= 0) {
+    if (this.y - this.sizeY / 2 <= 0) {
       this.directionY = 1;
-    } else if (this.y + this.size / 2 >= this.canvas.height) {
+    } else if (this.y + this.sizeY / 2 >= this.canvas.height) {
       this.directionY = -1;
-    }  else if (this.x - this.size / 2 <= 0) {
+    }  else if (this.x - this.sizeX / 2 <= 0) {
         this.directionX = 1;
-      } else if (this.x + this.size / 2 >= this.canvas.width) {
+      } else if (this.x + this.sizeX / 2 >= this.canvas.width) {
         this.directionX = -1;
       }
   }
 
   checkCollisionEnemy(enemy) {
-    const collideRight = this.x + this.size / 2 > enemy.x - enemy.size / 2;
-    const collideLeft = this.x - this.size / 2 < enemy.x + enemy.size / 2;
-    const collideTop = this.y + this.size / 2 > enemy.y - enemy.size / 2;
-    const collideBottom = this.y - this.size / 2 < enemy.y + enemy.size / 2;
+    const collideRight = this.x + this.sizeX / 2 > enemy.x - enemy.size / 2;
+    const collideLeft = this.x - this.sizeX / 2 < enemy.x + enemy.size / 2;
+    const collideTop = this.y + this.sizeY / 2 > enemy.y - enemy.size / 2;
+    const collideBottom = this.y - this.sizeY / 2 < enemy.y + enemy.size / 2;
 
     if (collideRight && collideLeft && collideTop && collideBottom) {
       return true;
