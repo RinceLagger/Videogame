@@ -12,11 +12,16 @@ function main() {
 
     function buildSplashScreen() {//genera pantalla inicio
         buildDom(`
+            <audio id="miAudio" src="./sounds/Intro.mp3" autoplay controls>
+            Your browser does not support the <code>audio</code> element.
+            </audio>
             <div class="game-intro">
+            
             <img src="./images/Portada.png" alt="title">
                 
-                <button id="start-button">StartGame</button>
+            <button id="start-button">StartGame</button>    
             </div>
+
             `);
         const startButton = document.querySelector("button");
         startButton.addEventListener("click", buildGame1Screen);
@@ -135,7 +140,7 @@ function main() {
         </div> 
         `);
 
-        
+        setTimeout(buildSplashScreen,5000);
 
     }  
     

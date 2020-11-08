@@ -118,8 +118,8 @@ class Player1 {
     else if (((this.y+this.sizeY / 4)-this.objectiveY)>0) this.directionY = -1;
     else this.directionY = 0;
 
-    console.log("directionX :", this.directionX,"X:",this.x,"objx: ",this.objectiveX ,"X-objX :",this.x - this.objectiveX); 
-    console.log("directionY :", this.directionY,"Y:",this.y,"objx: ",this.objectiveY, "Y-objY :",this.y - this.objectiveY); 
+    // console.log("directionX :", this.directionX,"X:",this.x,"objx: ",this.objectiveX ,"X-objX :",this.x - this.objectiveX); 
+    // console.log("directionY :", this.directionY,"Y:",this.y,"objx: ",this.objectiveY, "Y-objY :",this.y - this.objectiveY); 
   }
   
 

@@ -17,10 +17,16 @@ class Game1 {
     this.isGameOver = false;
     this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
     this.imgFrente =[];
+    this.audio = new Audio("./sounds/Audio-game1.mp3");
     
    }
 
   startLoop() {
+
+    this.audio.volume = 0.02;
+    this.audio.play();
+
+
     this.player1 = new Player1(this.canvas);
     this.createRoom();//generamos la habitación y objetos
     this.createAnimations(); //generamos animaciones personaje
@@ -161,7 +167,11 @@ class Game1 {
     
     this.objects.forEach((object, index) => {
       if (this.player1.checkCollisionObject(object)) { //una vez estamos pegados al objeto mostramos su texto asociado
-        if(this.objects[index].showTest() && this.player1.getHut())this.isGameOver = true;
+        if(this.objects[index].showTest() && this.player1.getHut()){
+          this.isGameOver = true;
+          this.audio.pause();
+          this.audio.currentTime = 0;
+        }
         else if(this.objects[index] instanceof MagicHut) this.player1.setHut(); 
         
       }

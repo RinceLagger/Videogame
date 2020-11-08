@@ -3,6 +3,8 @@
 var room2 = new Image(); 
 room2.src = './images/game2_background.png';
 
+
+
 class Game2 {
   constructor(canvas) {
     this.canvas = canvas;
@@ -13,9 +15,14 @@ class Game2 {
     this.isGameOver = false;
     this.timeLeft =30;
     this.score = 0;
+    this.audio = new Audio("./sounds/Audio_game2.mp3");
   }
 
   startLoop() {
+
+    this.audio.volume = 0.02;
+    this.audio.play();
+
     this.player = new Player2(this.canvas, 3);
     let time = 0;
     let timeLeftFollower =0; 
@@ -67,7 +74,9 @@ class Game2 {
       if(this.timeLeft===0){ //si se acaba el tiempo antes de conseguir un número suficiente de subscriptores
         this.isGameOver =true;
         this.onGameOver();
-
+        this.audio.pause(); 
+        
+        this.audio.currentTime = 0;
       }
     }
         return time;
@@ -136,7 +145,9 @@ class Game2 {
         if (this.score===20) { 
           this.isGameOver = true;
           this.onGameWin(); //ganamos al alcanzar los seguidores
-          
+          this.audio.pause(); 
+        
+          this.audio.currentTime = 0;
         }
       }
     });
