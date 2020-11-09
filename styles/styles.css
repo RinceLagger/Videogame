@@ -105,7 +105,7 @@ canvas{
 #dialogs{
     font-family: 'Press Start 2P', cursive;
     border: solid 2px black;
-    padding: 5px 10px;
+    padding: 5px 12px;
     display: flex;
     align-items: center;
     line-height: 2;

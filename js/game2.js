@@ -13,9 +13,12 @@ class Game2 {
     this.followers =[];
     this.enemies = [];
     this.isGameOver = false;
-    this.timeLeft =100;
+    this.timeLeft =60;
     this.score = 0;
     this.audio = new Audio("./sounds/Audio_game2.mp3");
+    this.audioSub = new Audio("./sounds/pop.mp3");
+    this.audioHater = new Audio("./sounds/ooh.mp3");
+  
   }
 
   startLoop() {
@@ -51,7 +54,7 @@ class Game2 {
         time++;
         timeLeftFollower++;
         timeAnimPlayer++;
-        
+        this.continueAudio()
         time = this.reduceTimeLeft(time);
         timeLeftFollower = this.disappearFollower(timeLeftFollower);
 
@@ -64,6 +67,13 @@ class Game2 {
     };
 
     window.requestAnimationFrame(loop);
+  }
+
+  continueAudio(){
+    if(this.audio.currentTime > 68){
+      this.audio.currentTime === 0;
+      this.audio.play();
+    }
   }
 
   reduceTimeLeft(time){
@@ -124,13 +134,16 @@ class Game2 {
 
     this.ctx.fillStyle = 'blue';
     this.ctx.font = '30px Arial';
-    this.ctx.fillText(`Subscribers: ${this.score}/100K`,this.canvas.width -300,60);
+    this.ctx.fillText(`Subscribers: ${this.score}/30K`,this.canvas.width -300,60);
   }
 
   checkAllCollisions() {
     this.player.checkScreen();
     this.enemies.forEach((hater, index) => {
       if (this.player.checkCollisionEnemy(hater)) {
+        
+        this.audioHater.volume = 0.03;
+        this.audioHater.play();
         
         this.enemies.splice(index, 1);
         if(this.score>0)this.score--;
@@ -139,10 +152,13 @@ class Game2 {
     });
     this.followers.forEach((follower, index) => {
       if (this.player.checkCollisionEnemy(follower)) {
+
+        this.audioSub.volume = 0.03;
+        this.audioSub.play();
         
         this.followers.splice(index, 1);
         this.score++;
-        if (this.score===10) { 
+        if (this.score===30) { 
           this.isGameOver = true;
           this.onGameWin(this.timeLeft); //ganamos al alcanzar los seguidores
           this.audio.pause(); 
