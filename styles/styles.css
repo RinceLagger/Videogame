@@ -126,3 +126,24 @@ canvas{
 #dialogs #haters{
     color: red;
 }
+
+@media (max-height: 800px) {
+
+    #dialogs{
+        font-family: 'Press Start 2P', cursive;
+        border: solid 2px black;
+        padding: 0px 12px;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        
+    }
+
+    #dialogs img{
+        height: 80px;
+        width: 80px;
+        margin-right: 70px;
+        margin-left: 30px;
+        
+    }
+  }
