@@ -34,7 +34,7 @@ class Game1 {
     
 
     const loop = () => {
-   
+      // console.log(this.audio.currentTime );
 
       this.checkAllCollisions();
       this.updateCanvas();
@@ -45,7 +45,7 @@ class Game1 {
         window.requestAnimationFrame(loop);
 
         time = this.changeMoveAnimations(time); //actualizamos animaciones de movimiento
-
+        this.continueAudio();
       }else{
         this.onGame2(); //llamamos a la callback para pasar a game2
       }
@@ -54,6 +54,14 @@ class Game1 {
     window.requestAnimationFrame(loop);
 
   }
+
+  continueAudio(){
+    if(this.audio.currentTime > 81){
+      this.audio.currentTime === 0;
+      this.audio.play();
+    }
+  }
+
 
   changeMoveAnimations(time){
 

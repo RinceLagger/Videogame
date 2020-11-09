@@ -13,7 +13,7 @@ class Game2 {
     this.followers =[];
     this.enemies = [];
     this.isGameOver = false;
-    this.timeLeft =30;
+    this.timeLeft =100;
     this.score = 0;
     this.audio = new Audio("./sounds/Audio_game2.mp3");
   }
@@ -142,9 +142,9 @@ class Game2 {
         
         this.followers.splice(index, 1);
         this.score++;
-        if (this.score===20) { 
+        if (this.score===10) { 
           this.isGameOver = true;
-          this.onGameWin(); //ganamos al alcanzar los seguidores
+          this.onGameWin(this.timeLeft); //ganamos al alcanzar los seguidores
           this.audio.pause(); 
         
           this.audio.currentTime = 0;

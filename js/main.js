@@ -19,7 +19,8 @@ function main() {
             
             <img src="./images/Portada.png" alt="title">
                 
-            <button id="start-button">StartGame</button>    
+            <button id="start-button" class="animate__animated animate__bounceInDown
+            ">StartGame</button>    
             </div>
 
             `);
@@ -67,10 +68,12 @@ function main() {
 
     function  buildGame2Screen() {//genera pantalla game2
         buildDom(`
-        <section class="game-screen">
+        <section class="game-screen ">
             <canvas></canvas>
             <div id="dialogs">
-            <p>juego 2</p>
+            <img src="./images/moveImageGame2.png" alt="movements">
+            <p>Consigue <span id="subs">suscriptores</span> hasta alcanzar el partner antes de que se acabe el tiempo!<br> Ten cuidado con los <span id="haters">niños rata</span>!</p>
+            
             </div>
         </section>  
         `);
@@ -119,15 +122,17 @@ function main() {
 
 
 
-    function  buildWinScreen() {//genera pantalla victoria
+    function  buildWinScreen(score) {//genera pantalla victoria
         buildDom(`
-        <div class="game-win">
+        <div class="game-over game-win">
         <div class="imageContainer"></div>
-        
+        <h1>HAS GANADO!</h1>
+        <p>Has conseguido el Partner haciendo respetar el nombre de Cienfuegos Online.</p>
+        <p>Te han sobrado <span id="score">${score} segundos</span>. Intenta seguir mejorando tu puntuación!</p>
         </div> 
         `);
 
-        setTimeout(buildSplashScreen,5000);
+        setTimeout(buildSplashScreen,10000);
 
     }   
 
@@ -136,11 +141,13 @@ function main() {
         buildDom(`
         <div class="game-over">
         <div class="imageContainer"></div>
-        
+        <h1>GAME OVER!</h1>
+        <p>Has perdido siendo humillado por niños de 8 años mientras streameabas. </p>
+        <p>Te unes a la jauría de niños rata y acabas tus días hateando por los <br> mundos virtuales y comiendo doritos. </p>
         </div> 
         `);
 
-        setTimeout(buildSplashScreen,5000);
+        setTimeout(buildSplashScreen,10000);
 
     }  
     
