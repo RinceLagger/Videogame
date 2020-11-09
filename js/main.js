@@ -10,12 +10,12 @@ function main() {
         main.innerHTML = html;
     }
 
-    // <audio id="miAudio" src="./sounds/Intro.mp3" autoplay controls>
-    // Your browser does not support the <code>audio</code> element.
-    // </audio>
+
 
     function buildSplashScreen() {//genera pantalla inicio
-        buildDom(`
+        buildDom(`    <audio id="miAudio" src="./sounds/Intro.mp3" autoplay controls>
+        Your browser does not support the <code>audio</code> element.
+        </audio>
 
             <div class="game-intro">
             
@@ -131,10 +131,13 @@ function main() {
         <h1>HAS GANADO!</h1>
         <p>Has conseguido el Partner haciendo respetar el nombre de Cienfuegos Online.</p>
         <p>Te han sobrado <span id="score">${score} segundos</span>. Intenta seguir mejorando tu puntuación!</p>
-        </div> 
+        </div>
+        <audio id="miAudio" src="./sounds/victory.mp3" autoplay >
+        Your browser does not support the <code>audio</code> element.
+        </audio> 
         `);
 
-        setTimeout(buildSplashScreen,10000);
+        setTimeout(buildSplashScreen,15000);
 
     }   
 
@@ -147,9 +150,12 @@ function main() {
         <p>Has perdido siendo humillado por niños de 8 años mientras streameabas. </p>
         <p>Te unes a la jauría de niños rata y acabas tus días hateando por los <br> mundos virtuales y comiendo doritos. </p>
         </div> 
+        <audio id="miAudio" src="./sounds/lose.mp3" autoplay >
+        Your browser does not support the <code>audio</code> element.
+        </audio> 
         `);
 
-        setTimeout(buildSplashScreen,10000);
+        setTimeout(buildSplashScreen,15000);
 
     }  
     

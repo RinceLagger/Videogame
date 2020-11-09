@@ -4,6 +4,7 @@ const textObjetoPrueba2 = ["Esto es una cama"];
 const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto!"];
 const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!"];
 const textObjetoPrueba5 = ["Un croma del Ali Express! Vamos a grabar unos buenos gameplays yeah!"];
+const textObjetoPrueba6 = ["Ratas bailarinas!", "cuándo han aprendido las ratas a organizar partidillos de futbol?"];
 
 var room = new Image(); 
 room.src = './images/Room.png';
@@ -145,10 +146,10 @@ class Game1 {
 
 
 
-    const ordenador = new Ordenador(this.canvas,this.canvas.width/2,this.canvas.height/2-this.canvas.height/10, this.canvas.width/4,100,textObjetoPrueba,0);
+    const ordenador = new Ordenador(this.canvas,this.canvas.width/2 + this.canvas.width/14,this.canvas.height/2-this.canvas.height/11, this.canvas.width/4,100,textObjetoPrueba,0);
     this.objects.push(ordenador);
 
-    const magicHut = new MagicHut(this.canvas,this.canvas.width/24+this.canvas.width*0.1,this.canvas.height/2,this.canvas.width/12,this.canvas.width/12,textObjetoPrueba3, 1);
+    const magicHut = new MagicHut(this.canvas,this.canvas.width/34+this.canvas.width*0.1,this.canvas.height/2 -this.canvas.width/55 ,this.canvas.width/12,this.canvas.width/12,textObjetoPrueba3, 1);
     this.objects.push(magicHut);
 
     const cama = new Object(this.canvas,this.canvas.width-this.canvas.width/7,this.canvas.height - this.canvas.height/8, this.canvas.width/4,this.canvas.height/4,textObjetoPrueba2, 2);
@@ -157,8 +158,12 @@ class Game1 {
     const armario = new Object(this.canvas,this.canvas.width-this.canvas.width/5,this.canvas.height/2-this.canvas.height/4+20, this.canvas.width/8,this.canvas.height/2-20,textObjetoPrueba4, 3);
     this.objects.push(armario);
 
-    const croma = new Object(this.canvas,this.canvas.width/20+40,this.canvas.height-this.canvas.height*0.2-80, this.canvas.width/12,this.canvas.height*0.4,textObjetoPrueba5, 4);
+    const croma = new Object(this.canvas,this.canvas.width/20+40,this.canvas.height-this.canvas.height*0.2-40, this.canvas.width/12,this.canvas.height*0.4,textObjetoPrueba5, 4);
     this.objects.push(croma);
+
+    
+    const ratas = new Object(this.canvas,this.canvas.width/34+this.canvas.width*0.3,this.canvas.height/2 - this.canvas.width/44, this.canvas.height/4 -this.canvas.width/55,this.canvas.width/14,textObjetoPrueba6, 5);
+    this.objects.push(ratas);
 
   }
 

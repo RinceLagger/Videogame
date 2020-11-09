@@ -10,6 +10,8 @@ var imgArmario = new Image();
 imgArmario.src = './images/armario.png';
 var imgCroma = new Image();
 imgCroma.src = './images/croma.png';
+var imgRatas = new Image();
+imgRatas.src = './images/ratas.png';
 
 class Object {
     constructor(canvas, x,y,sizeX,sizeY,text,index) {
@@ -22,7 +24,7 @@ class Object {
       this.text = text;
       this.textContainer = document.querySelector("#dialogs p");
       this.indexTest = 0;
-      this.images = [imgMesa, imgCofre,imgCama, imgArmario, imgCroma];
+      this.images = [imgMesa, imgCofre,imgCama, imgArmario, imgCroma, imgRatas];
       this.index = index;
     }
   
