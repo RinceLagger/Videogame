@@ -34,11 +34,12 @@ imgLateral5_v.src = './images/Lateral5_v.png';
 
 class Player1 {
   constructor(canvas) {
-    this.sizeX = 120;
-    this.sizeY = 300;
     this.canvas = canvas;
+    this.sizeX = this.canvas.width/14;
+    this.sizeY = 3* this.canvas.width/16;
+    
     this.ctx = this.canvas.getContext("2d");
-    this.x = this.canvas.width/4 - this.sizeX / 2;
+    this.x = this.canvas.width/2 - this.sizeX / 2;
     this.y = this.canvas.height - this.canvas.height/4;
     this.speedX = 1;
     this.speedY = 1;

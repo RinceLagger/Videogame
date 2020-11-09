@@ -10,11 +10,13 @@ function main() {
         main.innerHTML = html;
     }
 
+    // <audio id="miAudio" src="./sounds/Intro.mp3" autoplay controls>
+    // Your browser does not support the <code>audio</code> element.
+    // </audio>
+
     function buildSplashScreen() {//genera pantalla inicio
         buildDom(`
-            <audio id="miAudio" src="./sounds/Intro.mp3" autoplay controls>
-            Your browser does not support the <code>audio</code> element.
-            </audio>
+
             <div class="game-intro">
             
             <img src="./images/Portada.png" alt="title">
