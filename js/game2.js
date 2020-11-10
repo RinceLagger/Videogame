@@ -128,13 +128,13 @@ class Game2 {
       follower.draw();
     });
     /*----dibujamos el marcador con el tiempo---*/
-    this.ctx.fillStyle = 'orange';
-    this.ctx.font = '30px Arial';
-    this.ctx.fillText(`Time Left: ${this.timeLeft} s`,this.canvas.width -300,30);
+    this.ctx.fillStyle = 'red';
+    this.ctx.font = '30px "Comic Sans MS", cursive, sans-serif';
+    this.ctx.fillText(`Time Left: ${this.timeLeft} s`,this.canvas.width -320,40);
 
-    this.ctx.fillStyle = 'blue';
-    this.ctx.font = '30px Arial';
-    this.ctx.fillText(`Subscribers: ${this.score}/30K`,this.canvas.width -300,60);
+    this.ctx.fillStyle = 'green';
+    this.ctx.font = '30px "Comic Sans MS", cursive, sans-serif';
+    this.ctx.fillText(`Subscribers: ${this.score}/30K`,this.canvas.width -320,80);
   }
 
   checkAllCollisions() {
