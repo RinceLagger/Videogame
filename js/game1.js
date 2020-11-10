@@ -1,10 +1,10 @@
 "use strict";
-const textObjetoPrueba = ["Estás seguro de que no quieres explorar un poco más?","Date una vuelta un poco más!"];
-const textObjetoPrueba2 = ["Esto es una cama"];
+const textObjetoPrueba = ["Aún no estás preparado para la aventura de streamear enfrente de tus seguidores.","Estás seguro de que no quieres explorar un poco más?","Date una vuelta y puede que encuentres lo que buscas...!"];
+const textObjetoPrueba2 = ["Esto es una cama y no es momento de ponerse a dormir Cienfuegos!", "No me has oído? Dormir no es una opción y para otros temas...esto es un videojuego para todos los públicos!"];
 const textObjetoPrueba3 = ["Has encontrado el sombrero del futuro, creo que ya estás listo para enfrentarte al reto!"];
-const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!"];
-const textObjetoPrueba5 = ["Un croma del Ali Express! Vamos a grabar unos buenos gameplays yeah!"];
-const textObjetoPrueba6 = ["Ratas bailarinas!", "cuándo han aprendido las ratas a organizar partidillos de futbol?"];
+const textObjetoPrueba4 = ["Es un armario lleno de polvo, procura que no lo enfoque la cámara en los directos!", "A ver si algún día ordenamos un poco por aquí..."];
+const textObjetoPrueba5 = ["Un croma del Ali Express! Vamos a grabar unos buenos gameplays yeah!","ya va siendo hora de pensar en el próximo vídeo a grabar Cienfuegos!" ];
+const textObjetoPrueba6 = ["Ratas bailarinas!, están bailando un tango!", "Cuándo han aprendido las ratas a organizar partidillos de futbol?", "Creo que cuando sea famoso les compraré comida rata-premium."];
 
 var room = new Image(); 
 room.src = './images/Room.png';

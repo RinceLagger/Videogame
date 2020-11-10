@@ -153,7 +153,7 @@ class Game2 {
     this.followers.forEach((follower, index) => {
       if (this.player.checkCollisionEnemy(follower)) {
 
-        this.audioSub.volume = 0.03;
+        this.audioSub.volume = 0.04;
         this.audioSub.play();
         
         this.followers.splice(index, 1);
