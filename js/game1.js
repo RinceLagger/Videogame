@@ -152,7 +152,7 @@ class Game1 {
     const magicHut = new MagicHut(this.canvas,this.canvas.width/34+this.canvas.width*0.1,this.canvas.height/2 -this.canvas.width/55 ,this.canvas.width/12,this.canvas.width/12,textObjetoPrueba3, 1);
     this.objects.push(magicHut);
 
-    const cama = new Object(this.canvas,this.canvas.width-this.canvas.width/7,this.canvas.height - this.canvas.height/8, this.canvas.width/4,this.canvas.height/4,textObjetoPrueba2, 2);
+    const cama = new Object(this.canvas,this.canvas.width-this.canvas.width/8,this.canvas.height - this.canvas.height/9, this.canvas.width/5,this.canvas.height/5,textObjetoPrueba2, 2);
     this.objects.push(cama);
 
     const armario = new Object(this.canvas,this.canvas.width-this.canvas.width/5,this.canvas.height/2-this.canvas.height/4+20, this.canvas.width/8,this.canvas.height/2-20,textObjetoPrueba4, 3);

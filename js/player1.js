@@ -110,7 +110,7 @@ class Player1 {
     // console.log(this.initialY+this.sizeY/2);
     // console.log( 11*this.canvas.height /16);
 
-    console.log("distancia absoluta en Y inicial",Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
+    // console.log("distancia absoluta en Y inicial",Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
 
     this.objectiveX =event.offsetX;
     this.objectiveY = event.offsetY;
@@ -160,11 +160,11 @@ class Player1 {
     //   this.speedY =1;
     //   this.condition3 = false;
     // }
-    console.log(Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
+    // console.log(Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
 
       if((this.initialY+this.sizeY/2)<  11*this.canvas.height /16 && Math.abs((this.y+this.sizeY / 4)-this.objectiveY)>20 && Math.floor(this.y-this.initialY)<20 && this.conditionMoveY){//Zona superior de la habitación, alejamos al personaje en Y antes de ir a por el objetivo
-        console.log("dentro");
-        console.log(Math.floor(this.y-this.initialY))
+        // console.log("dentro");
+        // console.log(Math.floor(this.y-this.initialY))
         if(this.directionY>0){
           this.speedX =0;
           this.speedY = 1;
@@ -190,7 +190,7 @@ class Player1 {
         if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
           this.directionY =0;
           
-          console.log("paso por cero");
+          // console.log("paso por cero");
         }
 
 
