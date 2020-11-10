@@ -106,7 +106,7 @@ class Game2 {
 
   updateCanvas() {
     this.player.update();
-    // this.hater.update();
+    
     this.enemies.forEach((hater) => {
       hater.update();
     });
@@ -127,7 +127,7 @@ class Game2 {
     this.followers.forEach((follower) => {
       follower.draw();
     });
-    /*----dibujamos el marcador con el tiempo---*/
+    /*----dibujamos el marcador con el tiempo y con la puntuación ---*/
     this.ctx.fillStyle = 'red';
     this.ctx.font = '30px "Comic Sans MS", cursive, sans-serif';
     this.ctx.fillText(`Time Left: ${this.timeLeft} s`,this.canvas.width -320,40);

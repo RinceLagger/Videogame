@@ -1,5 +1,5 @@
 body{
-    /* background-color: rgb(137 24 30); */
+  
     background-color: black;
     margin:0;
     padding:0;
@@ -56,7 +56,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: rgb(137 24 30); */
     background-color: black;
     
 } 
@@ -68,7 +67,6 @@ body{
 
 canvas{
     margin-top: 3%;
-    /* border: 1px solid red; */
     
 }
 

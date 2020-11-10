@@ -54,7 +54,7 @@ class Player1 {
     this.currentImg = this.imgFront[0];
     this.imgRight = [imgLateral1,imgLateral2,imgLateral3,imgLateral4,imgLateral5];
     this.imgLeft = [imgLateral1_v,imgLateral2_v,imgLateral3_v,imgLateral4_v,imgLateral5_v];
-    //this.currentLat1Img = this.imgLat1[0];
+    
   }
 
   changeAnimationFront(){
@@ -88,18 +88,6 @@ class Player1 {
     }
 
   draw() {
-    // this.ctx.fillStyle = "green";
-    // this.ctx.fillRect(
-    //   this.x - this.sizeX / 2,
-    //   this.y - this.sizeY / 2,
-    //   this.sizeX,
-    //   this.sizeY
-    // );
-
-    // this.ctx.beginPath();
-    // this.ctx.moveTo(this.x, this.y);
-    // this.ctx.lineTo(this.x+2, this.y+2);
-    // this.ctx.stroke();
 
     this.ctx.drawImage(this.currentImg,this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
 
@@ -107,10 +95,6 @@ class Player1 {
 
   setDirection(event) { //define el movimiento en x e y del jugador en función de la posición relativa al objetivo
     this.initialY= this.y;
-    // console.log(this.initialY+this.sizeY/2);
-    // console.log( 11*this.canvas.height /16);
-
-    // console.log("distancia absoluta en Y inicial",Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
 
     this.objectiveX =event.offsetX;
     this.objectiveY = event.offsetY;
@@ -123,48 +107,14 @@ class Player1 {
     else if (((this.y+this.sizeY / 4)-this.objectiveY)>0) this.directionY = -1;
     else this.directionY = 0;
 
-    // console.log("directionX :", this.directionX,"X:",this.x,"objx: ",this.objectiveX ,"X-objX :",this.x - this.objectiveX); 
-    // console.log("directionY :", this.directionY,"Y:",this.y,"objx: ",this.objectiveY, "Y-objY :",this.y - this.objectiveY); 
   }
   
 
 
   checkObjective(){ //comprueba si estás cerca de la posición indicada y para al jugador
 
-    // if(this.directionX!=0 && this.directionY !=0 && this.x< 3* this.canvas.width/4 && this.x>this.canvas.width/4 || this.directionX!=0 && this.directionY !=0 && this.y< 3*this.canvas.height /4   ){//movimiento en ambos ejes y zona central de la habitación
-    //   this.speedX =0; //nos movemos inicialmente en el eje Y
-    //   this.condition = true;
-    //   console.log("zona central");
-    // }
-    // else if(this.condition) {
-    //   this.speedX =1;
-    //   this.condition = false;
-    // }
-
-    // else if(this.directionX!=0 && this.directionY !=0 && this.y> 3*this.canvas.height /4 ){//movimiento en ambos ejes zona zuperior del mapa y laterales
-    //   this.speedY =0; //nos movemos inicialmente en el eje Y
-    //   this.condition2 = true;
-    //   console.log("zona lateral abajo");
-    // }
-    // else if(this.condition2) {
-    //   this.speedY =1;
-    //   this.condition2 = false;
-    // }
-
-    // else if(this.directionX!=0 && this.directionY !=0 && this.y> 3*this.canvas.height /4 ){//movimiento en ambos ejes zona inferior del mapa y laterales
-    //   this.speedY =0; //nos movemos inicialmente en el eje X
-    //   this.condition3 = true;
-    //   console.log("zona lateral abajo");
-    // }
-    // else if(this.condition2) {
-    //   this.speedY =1;
-    //   this.condition3 = false;
-    // }
-    // console.log(Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
-
       if((this.initialY+this.sizeY/2)<  11*this.canvas.height /16 && Math.abs((this.y+this.sizeY / 4)-this.objectiveY)>20 && Math.floor(this.y-this.initialY)<20 && this.conditionMoveY){//Zona superior de la habitación, alejamos al personaje en Y antes de ir a por el objetivo
-        // console.log("dentro");
-        // console.log(Math.floor(this.y-this.initialY))
+
         if(this.directionY>0){
           this.speedX =0;
           this.speedY = 1;
@@ -176,48 +126,32 @@ class Player1 {
           this.speedY = 1;
         }
 
-
       }else{
         this.speedX =1;
         this.speedY =1;
         this.conditionMoveY = false;
         console.log("segunda");
         if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
-        // if(Math.abs(this.y-this.objectiveY)<2){
-        //   this.directionY =0;
-        //   //console.log("paso por cero");//
-        // }
+
         if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
-          this.directionY =0;
-          
-          // console.log("paso por cero");
+          this.directionY =0;       
         }
-
-
-
-      }
-       
-
- 
-
+      }    
   }
 
   checkSzenario() { //comprueba que no se salga el personaje de la escena
-    //console.log(this.y - this.sizeY / 2 )
+
     if (this.y +this.sizeY / 4 <= this.canvas.height/2) {
       this.y = this.canvas.height/2 - this.sizeY/4;
-      /*if(this.directionX===0)*/this.directionY=0;
-     // console.log(this.y)
+      this.directionY=0;
+     
     }else if(this.y + this.sizeY / 2 >= this.canvas.height){
       this.y = this.canvas.height - this.sizeY/2;
-      /*if(this.directionX===0)*/this.directionY=0;
+      this.directionY=0;
     } 
     //comprobamos limites de pared izquierda
     const posWallIzq = Math.abs((this.x - this.sizeX/2)/(this.canvas.height -(this.y + this.sizeY/2)));
-    // console.log(this.canvas.height );
-    // console.log((this.y + this.sizeY));
-    // console.log(this.proportionWall);
-    // console.log(posWallIzq);
+
     if(posWallIzq<this.proportionWall){ //si chocamos separamos 3 pixels de la pared
       this.directionX = 0;
       this.directionY = 0;
@@ -226,10 +160,7 @@ class Player1 {
     }
     //comprobamos limites de pared derecha
     const posWallDer = Math.abs((this.canvas.width-(this.x + this.sizeX/2))/(this.canvas.height -(this.y + this.sizeY/2)));
-    // console.log(this.canvas.height );
-    // console.log((this.y + this.sizeY));
-    // console.log(this.proportionWall);
-    // console.log(posWallDer);
+
     if(posWallDer<this.proportionWall){ //si chocamos separamos 3 pixels de la pared
       this.directionX = 0;
       this.directionY = 0;
@@ -242,9 +173,6 @@ class Player1 {
 
   checkCollisionObject(object) {
 
-
-
-
     const collideRight = this.x + this.sizeX / 2 > object.x - object.sizeX / 2;    
     const collideLeft = this.x - this.sizeX / 2 < object.x + object.sizeX / 2;
     const collideTop = this.y + this.sizeY / 2 > object.y - object.sizeY / 2;
@@ -255,7 +183,6 @@ class Player1 {
     if (collideRight && collideLeft && collideTop && collideBottom) {//si colisionamos paramos al jugador
       console.log("directionX :",this.directionX );
       console.log("directionY :",this.directionY );
-      // console.log("comprobando colisiones")
 
       this.conditionMoveY = true;
 

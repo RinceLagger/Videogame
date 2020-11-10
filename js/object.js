@@ -31,25 +31,19 @@ class Object {
 
   
     draw() {
-        //console.log("pintando ordenador", this.x,this.y);
-      // this.ctx.fillStyle = "red";
-      // this.ctx.fillRect(this.x- this.sizeX/2, this.y - this.sizeY/2, this.sizeX, this.sizeY);
-      //console.log(this.index, this.images[0], this.images[this.index]);
+
       this.ctx.drawImage(this.images[this.index],this.x - this.sizeX / 2, this.y - this.sizeY / 2, this.sizeX, this.sizeY);
     }
 
 
     showTest(){//muestra los comentarios de los objetos al clickar sobre ellos
-        
-        
+             
         let innerText = this.text[this.indexTest];
         this.textContainer.innerText = innerText;
         
         this.indexTest++;
         if(this.indexTest>=this.text.length)this.indexTest=0;
     }
-  
-
   }
 
 
@@ -61,7 +55,7 @@ class Object {
     }
 
 
-    showTest(){//muestra los comentarios de los objetos al clickar sobre ellos
+    showTest(){//sobreescribimos el método para que una vez encontrado el sombrero en vez de mostrar un texto cambie al game2 llamando a changeGame
         
         
         let innerText = this.text[this.indexTest];
@@ -78,8 +72,6 @@ class Object {
         
         return true;
     }
-
-
   }
 
 
@@ -92,22 +84,19 @@ class Object {
 
     showTest(){//muestra los comentarios de los objetos al clickar sobre ellos
         
-        
         let innerText = this.text[this.indexTest];
         this.textContainer.innerText = innerText;
         
         this.indexTest++;
     
         if(this.indexTest>=this.text.length)this.indexTest=0;
-
-        
+       
     }
   
-    findHut(){
+    findHut(){ //devuelve True al encontrar el sombrero
         
         return true;
     }
-
 
   }
   

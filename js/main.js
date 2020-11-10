@@ -60,7 +60,7 @@ function main() {
         canvasElement.addEventListener("click", objectivePosition); //añado funcionalidad con el ratón para el game1
 
         function objectivePosition(event){
-            //console.log("click");
+            
             game1.player1.setDirection(event);
             
         }
