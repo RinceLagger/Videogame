@@ -36,7 +36,7 @@ class Player1 {
   constructor(canvas) {
     this.canvas = canvas;
     this.sizeX = this.canvas.width/14;
-    this.sizeY = 3* this.canvas.width/16;
+    this.sizeY = 3* this.canvas.width/18;
     
     this.ctx = this.canvas.getContext("2d");
     this.x = this.canvas.width/2 - this.sizeX / 2;
@@ -106,7 +106,11 @@ class Player1 {
   }
 
   setDirection(event) { //define el movimiento en x e y del jugador en función de la posición relativa al objetivo
+    this.initialY= this.y;
+    // console.log(this.initialY+this.sizeY/2);
+    // console.log( 11*this.canvas.height /16);
 
+    console.log("distancia absoluta en Y inicial",Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
 
     this.objectiveX =event.offsetX;
     this.objectiveY = event.offsetY;
@@ -156,17 +160,45 @@ class Player1 {
     //   this.speedY =1;
     //   this.condition3 = false;
     // }
+    console.log(Math.abs((this.y+this.sizeY / 4)-this.objectiveY));
+
+      if((this.initialY+this.sizeY/2)<  11*this.canvas.height /16 && Math.abs((this.y+this.sizeY / 4)-this.objectiveY)>20 && Math.floor(this.y-this.initialY)<20 && this.conditionMoveY){//Zona superior de la habitación, alejamos al personaje en Y antes de ir a por el objetivo
+        console.log("dentro");
+        console.log(Math.floor(this.y-this.initialY))
+        if(this.directionY>0){
+          this.speedX =0;
+          this.speedY = 1;
+        }else if(this.directionY<0){
+          this.speedX =0;
+          this.speedY = -1;
+        }else{
+          this.speedX =0;
+          this.speedY = 1;
+        }
+
+
+      }else{
+        this.speedX =1;
+        this.speedY =1;
+        this.conditionMoveY = false;
+        console.log("segunda");
+        if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
+        // if(Math.abs(this.y-this.objectiveY)<2){
+        //   this.directionY =0;
+        //   //console.log("paso por cero");//
+        // }
+        if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
+          this.directionY =0;
+          
+          console.log("paso por cero");
+        }
+
+
+
+      }
        
 
-      if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
-      // if(Math.abs(this.y-this.objectiveY)<2){
-      //   this.directionY =0;
-      //   //console.log("paso por cero");//
-      // }
-      if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
-        this.directionY =0;
-        //console.log("paso por cero");//
-      }
+ 
 
   }
 
@@ -224,6 +256,8 @@ class Player1 {
       console.log("directionX :",this.directionX );
       console.log("directionY :",this.directionY );
       // console.log("comprobando colisiones")
+
+      this.conditionMoveY = true;
 
       //separamos 3 pixeles el personaje para permitir de nuevo movimiento en la dirección contraria a la que el personaje llevaba
       
