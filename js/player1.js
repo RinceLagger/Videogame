@@ -32,6 +32,38 @@ imgLateral4_v.src = './images/Lateral4_v.png';
 var imgLateral5_v = new Image(); 
 imgLateral5_v.src = './images/Lateral5_v.png'; 
 
+var imgFrente1_s = new Image(); 
+imgFrente1_s.src = './images/DeFrente1_somb.png'; 
+var imgFrente2_s = new Image(); 
+imgFrente2_s.src = './images/DeFrente2_somb.png'; 
+var imgFrente3_s = new Image(); 
+imgFrente3_s.src = './images/DeFrente3_somb.png'; 
+var imgFrente4_s = new Image(); 
+imgFrente4_s.src = './images/DeFrente4_somb.png'; 
+var imgFrente5_s = new Image(); 
+imgFrente5_s.src = './images/DeFrente5_somb.png'; 
+
+var imgLateral1_s = new Image(); 
+imgLateral1_s.src = './images/Lateral1_somb.png'; 
+var imgLateral2_s = new Image(); 
+imgLateral2_s.src = './images/Lateral2_somb.png'; 
+var imgLateral3_s = new Image(); 
+imgLateral3_s.src = './images/Lateral3_somb.png'; 
+var imgLateral4_s = new Image(); 
+imgLateral4_s.src = './images/Lateral4_somb.png'; 
+var imgLateral5_s = new Image(); 
+imgLateral5_s.src = './images/Lateral5_somb.png'; 
+var imgLateral1_v_s = new Image(); 
+imgLateral1_v_s.src = './images/Lateral1_somb_inv.png'; 
+var imgLateral2_v_s = new Image(); 
+imgLateral2_v_s.src = './images/Lateral2_somb_inv.png'; 
+var imgLateral3_v_s = new Image(); 
+imgLateral3_v_s.src = './images/Lateral3_somb_inv.png'; 
+var imgLateral4_v_s = new Image(); 
+imgLateral4_v_s.src = './images/Lateral4_somb_inv.png'; 
+var imgLateral5_v_s = new Image(); 
+imgLateral5_v_s.src = './images/Lateral5_somb_inv.png'; 
+
 class Player1 {
   constructor(canvas) {
     this.canvas = canvas;
@@ -55,6 +87,12 @@ class Player1 {
     this.imgRight = [imgLateral1,imgLateral2,imgLateral3,imgLateral4,imgLateral5];
     this.imgLeft = [imgLateral1_v,imgLateral2_v,imgLateral3_v,imgLateral4_v,imgLateral5_v];
     
+    this.imgSomb =[imgFrente1_s, imgFrente2_s, imgFrente3_s, imgFrente4_s, imgFrente5_s];
+    this.imgRightSomb = [imgLateral1_s,imgLateral2_s,imgLateral3_s,imgLateral4_s,imgLateral5_s];
+    this.imgLeftSomb = [imgLateral1_v_s,imgLateral2_v_s,imgLateral3_v_s,imgLateral4_v_s,imgLateral5_v_s];
+
+    this.sizeXSomb =this.canvas.width/14 * 1.05;
+    this.sizeYSomb = 3* this.canvas.width/18 * 1.05;
   }
 
   changeAnimationFront(){
@@ -242,7 +280,18 @@ class Player1 {
 
 
   setHut(){
+
+    if(this.magicHut ==false){
     this.magicHut = true;
+    this.imgFront = this.imgSomb;
+    this.imgRight = this.imgRightSomb; 
+    this.imgLeft = this.imgLeftSomb;
+    this.sizeX = this.sizeXSomb;
+    this.sizeY = this.sizeYSomb;
+    this.x = this.x + (this.x*0.05);
+    this.y = this.y - (this.y*0.05);
+    this.currentImg = this.imgSomb[0];
+    }
   }
 
   getHut(){
