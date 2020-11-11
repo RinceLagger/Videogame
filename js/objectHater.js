@@ -2,7 +2,7 @@
 
 
 var imgHater = new Image(); 
-imgHater.src = './images/hater.png'; 
+imgHater.src = './images/hater2.png'; 
 
 class Hater {
   constructor(canvas, x, y, playerX, playerY) {
