@@ -289,7 +289,7 @@ class Player1 {
     this.sizeX = this.sizeXSomb;
     this.sizeY = this.sizeYSomb;
     this.x = this.x + (this.x*0.05);
-    this.y = this.y - (this.y*0.05);
+    this.y = this.y + (this.y*0.05);
     this.currentImg = this.imgSomb[0];
     }
   }
