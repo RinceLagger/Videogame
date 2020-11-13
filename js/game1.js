@@ -20,10 +20,11 @@ class Game1 {
     this.imgFrente =[];
     this.audio = new Audio("./sounds/Audio-game1.mp3");
     
+    
    }
 
   startLoop() {
-
+    let timeReal = Date.now();
     this.audio.volume = 0.02;
     this.audio.play();
 
@@ -36,6 +37,8 @@ class Game1 {
 
     const loop = () => {
       // console.log(this.audio.currentTime );
+
+      if(Date.now()-timeReal >10){
 
       this.checkAllCollisions();
       this.updateCanvas();
@@ -50,7 +53,12 @@ class Game1 {
       }else{
         this.onGame2(); //llamamos a la callback para pasar a game2
       }
+      timeReal = Date.now();
+    }else{
+      window.requestAnimationFrame(loop);
+    }
     };
+    
 
     window.requestAnimationFrame(loop);
 
