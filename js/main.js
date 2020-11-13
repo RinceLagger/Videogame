@@ -129,6 +129,7 @@ function main() {
         <div class="game-over game-win">
         <div class="imageContainer"></div>
         <h1>HAS GANADO!</h1>
+        <img src="./images/victoria.png" alt="victory-image">
         <p>Has conseguido el Partner haciendo respetar el nombre de Cienfuegos Online.</p>
         <p>Te han sobrado <span id="score">${score} segundos</span>. Intenta seguir mejorando tu puntuación!</p>
         </div>
@@ -147,6 +148,7 @@ function main() {
         <div class="game-over">
         <div class="imageContainer"></div>
         <h1>GAME OVER!</h1>
+        <img src="./images/derrota.png" alt="loose-image">
         <p>Has perdido siendo humillado por niños de 8 años mientras streameabas. </p>
         <p>Te unes a la jauría de niños rata y acabas tus días hateando por los <br> mundos virtuales y comiendo doritos. </p>
         </div> 

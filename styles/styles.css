@@ -86,6 +86,10 @@ canvas{
     line-height: 2;
 }
 
+.game over h1{
+    margin-top: 20px;
+}
+
 .game-win{
     color: green;
 }
