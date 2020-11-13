@@ -29,7 +29,7 @@ class Game2 {
     this.player = new Player2(this.canvas, 3);
     let time = 0;
     let timeReal = Date.now();
-    let timeLeftFollower =0; 
+    let timeLeftFollower = Date.now();
     let timeAnimPlayer = 0;
 
     const loop = () => {
@@ -56,7 +56,7 @@ class Game2 {
       if (!this.isGameOver) {
         window.requestAnimationFrame(loop);
         time++;
-        timeLeftFollower++;
+        //timeLeftFollower++;
         timeAnimPlayer++;
         this.continueAudio()
         time = this.reduceTimeLeft(time);
@@ -105,9 +105,9 @@ class Game2 {
   
   disappearFollower(timeLeftFollower){
     
-    if(timeLeftFollower===120){ //cada aprox 1 segundo segundos hacemos desaparecer el follower más antiguo aparecido
+    if(Date.now()-timeLeftFollower>2000){ //cada aprox 1 segundo segundos hacemos desaparecer el follower más antiguo aparecido
       this.followers.shift(); 
-      timeLeftFollower =0;
+      timeLeftFollower = Date.now();
     }
     return timeLeftFollower;
 
