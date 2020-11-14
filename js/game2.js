@@ -39,7 +39,14 @@ class Game2 {
       if (Math.random() > 0.97) { //generamos la aparición random de haters
       const y = Math.floor(Math.random() * this.canvas.height);
       const x = Math.floor(Math.random() * this.canvas.width);
-        this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY()));
+
+        if((this.timeLeft<45 &&this.timeLeft>40) || (this.timeLeft<25 &&this.timeLeft>20 || this.timeLeft<5  ) ){
+          this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY(),6,1));
+        }else{
+          this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY(), 4,0));
+        }
+
+        
       }
 
     if (Math.random() > 0.98) { //generamos la aparición random de followers con menos probabilidad
