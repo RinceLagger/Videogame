@@ -18,14 +18,16 @@ class Game2 {
     this.audio = new Audio("./sounds/Audio_game2.mp3");
     this.audioSub = new Audio("./sounds/pop.mp3");
     this.audioHater = new Audio("./sounds/ooh.mp3");
-  
+    this.ratasRojas = true; //condición para cambiar sonido solo una vez por periodo
+    this.audioRojas = new Audio("./sounds/audioRatasRojas.mp3");
   }
 
   startLoop() {
 
     this.audio.volume = 0.02;
     this.audio.play();
-
+    this.audioRojas.volume = 0.04;
+    //this.audioRojas.play();
     this.player = new Player2(this.canvas, 3);
     let time = 0;
     let timeReal = Date.now();
@@ -40,7 +42,26 @@ class Game2 {
       const y = Math.floor(Math.random() * this.canvas.height);
       const x = Math.floor(Math.random() * this.canvas.width);
 
-        if((this.timeLeft<45 &&this.timeLeft>40) || (this.timeLeft<25 &&this.timeLeft>20 || this.timeLeft<5  ) ){
+         /* alterar sonido cuando las ratas sean rojas */
+
+        if((this.timeLeft<45 &&this.timeLeft>35 && this.ratasRojas) || (this.timeLeft<20 &&this.timeLeft>10 && this.ratasRojas)){ 
+          console.log("audio rojas")
+          this.ratasRojas =false;
+
+          this.continueAudio(1);
+        }
+
+        else if ((this.timeLeft<35 && this.timeLeft>20 && !this.ratasRojas) || (this.timeLeft<10 && !this.ratasRojas) ){
+          console.log("audio vuelta amarillas")
+          this.ratasRojas =true;
+
+          this.continueAudio(0);
+        }
+
+        /*-------------------------*/
+     
+
+        if((this.timeLeft<45 &&this.timeLeft>35) || (this.timeLeft<20 &&this.timeLeft>10 ) ){//creación de ratas rojas más rápidas
           this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY(),6,1));
         }else{
           this.enemies.push(new Hater(this.canvas,x, y, this.player.getX(),this.player.getY(), 4,0));
@@ -65,7 +86,7 @@ class Game2 {
         time++;
         //timeLeftFollower++;
         timeAnimPlayer++;
-        this.continueAudio()
+       // this.continueAudio()
         time = this.reduceTimeLeft(time);
         timeLeftFollower = this.disappearFollower(timeLeftFollower);
 
@@ -86,11 +107,20 @@ class Game2 {
     window.requestAnimationFrame(loop);
   }
 
-  continueAudio(){
-    if(this.audio.currentTime > 68){
-      this.audio.currentTime === 0;
+  continueAudio(audioType){//reiniciamos cada uno de los dos tipos de audios antes de hacerlos sonar y paramos el otro audio
+
+    if(!audioType){
+      this.audioRojas.pause();
+      this.audioRojas.currentTime = 0;
       this.audio.play();
+    }else if(audioType){
+      this.audio.pause();
+      this.audio.currentTime = 0;
+      this.audioRojas.play();
     }
+   
+    
+ 
   }
 
   reduceTimeLeft(time){
