@@ -168,7 +168,7 @@ class Player1 {
         this.speedX =1;
         this.speedY =1;
         this.conditionMoveY = false;
-        console.log("segunda");
+        //console.log("segunda");
         if(Math.abs(this.x-this.objectiveX)<2)this.directionX =0;
 
         if(Math.abs((this.y+this.sizeY / 4)-this.objectiveY)<2){
@@ -219,8 +219,8 @@ class Player1 {
 
     
     if (collideRight && collideLeft && collideTop && collideBottom) {//si colisionamos paramos al jugador
-      console.log("directionX :",this.directionX );
-      console.log("directionY :",this.directionY );
+      //console.log("directionX :",this.directionX );
+      //console.log("directionY :",this.directionY );
 
       this.conditionMoveY = true;
 

@@ -25,6 +25,7 @@ class Game2 {
     this.imgCurrentRoom = room2;
     this.imgRoomB = roomB;
     this.imgRoomN = roomN;
+    this.audioSync =false;
     
   }
 
@@ -45,7 +46,7 @@ class Game2 {
 
       if(Date.now()-timeReal2 >16){//cambio de fondo psicodélico con la aparición de las ratas rojas
 
-      if((this.timeLeft<45 &&this.timeLeft>35 ) || (this.timeLeft<20 &&this.timeLeft>10)){ 
+      if((this.timeLeft<45 &&this.timeLeft>35 && this.audioSync) || (this.timeLeft<20 &&this.timeLeft>10 && this.audioSync)){ 
         this.changeBackgroungRoom();
 
       }else{
@@ -63,9 +64,9 @@ class Game2 {
          /* alterar sonido cuando las ratas sean rojas */
 
         if((this.timeLeft<45 &&this.timeLeft>35 && this.ratasRojas) || (this.timeLeft<20 &&this.timeLeft>10 && this.ratasRojas)){ 
-          console.log("audio rojas")
+          //console.log("audio rojas")
           this.ratasRojas =false;
-
+          this.audioSync =true;
           
           this.continueAudio(1);
         }
@@ -75,7 +76,7 @@ class Game2 {
         else if ((this.timeLeft<35 && this.timeLeft>20 && !this.ratasRojas) || (this.timeLeft<10 && !this.ratasRojas) ){
           console.log("audio vuelta amarillas")
           this.ratasRojas =true;
-          
+          this.audioSync =false;
           this.continueAudio(0);
         }
 
@@ -241,7 +242,7 @@ class Game2 {
           this.isGameOver = true;
           this.onGameWin(this.timeLeft); //ganamos al alcanzar los seguidores
           this.audio.pause(); 
-        
+          this.audioRojas.pause();
           this.audio.currentTime = 0;
         }
       }
