@@ -42,11 +42,14 @@ class Game2 {
 
     const loop = () => {
 
+      if(Date.now()-timeReal >5){
+
       if((this.timeLeft<45 &&this.timeLeft>35 ) || (this.timeLeft<20 &&this.timeLeft>10)){ 
         this.changeBackgroungRoom();
 
       }else{
         this.imgCurrentRoom = room2;
+      }
       }
 
       if(Date.now()-timeReal >10){
