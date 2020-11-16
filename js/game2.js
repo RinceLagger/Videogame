@@ -2,8 +2,10 @@
 
 var room2 = new Image(); 
 room2.src = './images/game2_background.png';
-
-
+var roomB = new Image(); 
+roomB.src = './images/Cien_fondoBlanco.png';
+var roomN = new Image(); 
+roomN.src = './images/Cien_fondoNegro.png';
 
 class Game2 {
   constructor(canvas) {
@@ -20,6 +22,10 @@ class Game2 {
     this.audioHater = new Audio("./sounds/ooh.mp3");
     this.ratasRojas = true; //condición para cambiar sonido solo una vez por periodo
     this.audioRojas = new Audio("./sounds/audioRatasRojas.mp3");
+    this.imgCurrentRoom = room2;
+    this.imgRoomB = roomB;
+    this.imgRoomN = roomN;
+    
   }
 
   startLoop() {
@@ -36,6 +42,13 @@ class Game2 {
 
     const loop = () => {
 
+      if((this.timeLeft<45 &&this.timeLeft>35 ) || (this.timeLeft<20 &&this.timeLeft>10)){ 
+        this.changeBackgroungRoom();
+
+      }else{
+        this.imgCurrentRoom = room2;
+      }
+
       if(Date.now()-timeReal >10){
 
       if (Math.random() > 0.97) { //generamos la aparición random de haters
@@ -48,13 +61,16 @@ class Game2 {
           console.log("audio rojas")
           this.ratasRojas =false;
 
+          
           this.continueAudio(1);
         }
+
+
 
         else if ((this.timeLeft<35 && this.timeLeft>20 && !this.ratasRojas) || (this.timeLeft<10 && !this.ratasRojas) ){
           console.log("audio vuelta amarillas")
           this.ratasRojas =true;
-
+          
           this.continueAudio(0);
         }
 
@@ -106,6 +122,17 @@ class Game2 {
 
     window.requestAnimationFrame(loop);
   }
+
+  changeBackgroungRoom(){
+    if(this.imgCurrentRoom!=this.imgRoomB)this.imgCurrentRoom = this.imgRoomB;
+    else {this.imgCurrentRoom = this.imgRoomN;
+    console.log("hab negra")
+    }
+
+
+
+  }
+
 
   continueAudio(audioType){//reiniciamos cada uno de los dos tipos de audios antes de hacerlos sonar y paramos el otro audio
 
@@ -165,7 +192,7 @@ class Game2 {
 
   drawCanvas() {
 
-    this.ctx.drawImage(room2,0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.drawImage(this.imgCurrentRoom,0, 0, this.canvas.width, this.canvas.height);
 
     this.player.draw();
     this.enemies.forEach((hater) => {
