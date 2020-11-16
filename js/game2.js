@@ -37,12 +37,13 @@ class Game2 {
     this.player = new Player2(this.canvas, 3);
     let time = 0;
     let timeReal = Date.now();
+    let timeReal2 = Date.now();
     let timeLeftFollower = Date.now();
     let timeAnimPlayer = 0;
 
     const loop = () => {
 
-      if(Date.now()-timeReal >5){
+      if(Date.now()-timeReal2 >16){//cambio de fondo psicodélico con la aparición de las ratas rojas
 
       if((this.timeLeft<45 &&this.timeLeft>35 ) || (this.timeLeft<20 &&this.timeLeft>10)){ 
         this.changeBackgroungRoom();
@@ -50,6 +51,7 @@ class Game2 {
       }else{
         this.imgCurrentRoom = room2;
       }
+      timeReal2 = Date.now(); 
       }
 
       if(Date.now()-timeReal >10){
