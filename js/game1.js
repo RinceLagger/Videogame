@@ -19,13 +19,13 @@ class Game1 {
     this.proportionWall =Math.abs((this.canvas.width*0.1)/ (this.canvas.height/2));
     this.imgFrente =[];
     this.audio = new Audio("./sounds/Audio-game1.mp3");
-    
+    this.audioZelda = new Audio("./sounds/zelda.mp3");
     
    }
 
   startLoop() {
     let timeReal = Date.now();
-    this.audio.volume = 0.02;
+    this.audio.volume = 0.03;
     this.audio.play();
 
 
@@ -193,7 +193,10 @@ class Game1 {
           this.audio.pause();
           this.audio.currentTime = 0;
         }
-        else if(this.objects[index] instanceof MagicHut) this.player1.setHut(); 
+        else if(this.objects[index] instanceof MagicHut) {this.player1.setHut(); 
+          this.audioZelda.volume = 0.06;
+          this.audioZelda.play();
+        }
         
       }
     });
