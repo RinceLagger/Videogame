@@ -250,4 +250,8 @@ If the haters ("red-rectangules") collides with the player, the punctuation will
 
 [Link to Trello](https://trello.com/b/DEc1K2EF/ironhack-project1-videogame)
 
+### Deploy
+
+[Just play and enjoy it!](https://rincelagger.github.io/Videogame/)
+
 
